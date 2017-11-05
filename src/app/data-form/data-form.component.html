@@ -1,0 +1,32 @@
+<br>
+
+<div class="col-12">
+  <div class="progress" style="top: 0; width: 100%">
+    <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4 centralizado">
+    <h1>{{questionario.titulo}}</h1> 
+  </div>
+  <div class="col-sm-8 ">
+    <div id="flip-container" class="row flip-container" >
+      <div class="flipper " [ngClass]="{'front': exibirForm, 'back': !exibirForm}">
+        <h3>{{pergunta.questao}}</h3>
+        <div class="form-group"> 
+          <button class="btn btn-outline-primary btn-lg btn-block" type="button"
+                 *ngFor="let resposta of pergunta.respostas">{{resposta.descricao}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<hr>
+<div class="row">
+  <div class="col-sm-4">
+      <button type="button" class="btn btn-secondary disabled" (click)="anterior()">Anterior</button>
+  </div>
+  <div class="col-sm-8">
+      <button type="button" style="float: right" class="btn btn-primary" (click)="proxima()">Próximo</button>
+  </div>
+</div>
