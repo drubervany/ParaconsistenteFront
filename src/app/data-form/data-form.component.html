@@ -13,9 +13,20 @@
     <div id="flip-container" class="row flip-container" >
       <div class="flipper " [ngClass]="{'front': exibirForm, 'back': !exibirForm}">
         <h3>{{pergunta.questao}}</h3>
-        <div class="form-group"> 
-          <button class="btn btn-outline-primary btn-lg btn-block" type="button"
+        <div class="form-group" *ngIf="pergunta.tipo=='Alternativa'"> 
+          <button class="btn btn-outline-primary btn-lg btn-block" type="button" 
                  *ngFor="let resposta of pergunta.respostas">{{resposta.descricao}}</button>
+        </div>
+        <div class="form-group" *ngIf="pergunta.tipo=='Binária'"> 
+          
+          <button class="btn btn-primary btn-lg" type="button" value="S">Sim</button>
+          <button class="btn btn-danger btn-lg" type="button" value="N">Não</button>
+
+        </div>
+        <div class="form-group" *ngIf="pergunta.tipo=='Seleção'"> 
+          <select class="selectpicker">
+            <option *ngFor="let resposta of pergunta.respostas" value="resposta.codigo">{{resposta.descricao}}</option>
+          </select>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@
     border: 0px solid #ccc;
 }
 /* START: Accommodating for IE */
-.flip-container:active .back, .flip-container.active .back {
+.flip-container.active .back {
     -webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
     -o-transform: rotateY(0deg);
@@ -26,7 +26,7 @@
     transform: rotateY(0deg);
 }
 
-.flip-container:active .front, .flip-container.active .front {
+.flip-container.active .front {
     -webkit-transform: rotateY(360deg);
     -moz-transform: rotateY(360deg);
     -o-transform: rotateY(360deg);
