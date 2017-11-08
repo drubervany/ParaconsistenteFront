@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('questionario App', () => {
+describe('Paraconsistente App', () => {
   let page: AppPage;
 
   beforeEach(() => {

@@ -1,0 +1,93 @@
+<form>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Codigo</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" disabled value="{{projeto.codigo}}">
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-primary" (click)="novo()" >Novo</button>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nome:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" value="{{projeto.nome}}">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Descrição:</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" value="{{projeto.descricao}}"></textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Status:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" value="{{projeto.status}}" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">GP Backup</label>
+    <div class="col-sm-6">
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">CNPJ:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" value="{{projeto.cliente.cnpj}}">
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-primary" (click)="pesquisar()">Pesquisar</button>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Cliente:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" value="{{projeto.cliente.nome}}" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">CFPS</label>
+    <div class="col-sm-6">
+      <select class="form-control" [(ngModel)]="cfpsSelecionado" name="Selecione CFPS"> 
+        <option *ngFor="let cfps of cfpsAtivos" [value]="cfps">{{cfps.nome}}</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-primary" (click)="adicionarCFPS()">Adicionar</button>
+    </div>
+  </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label">CFPS Selecionados:</label>
+    <div class="col-sm-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Remover</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cfps of projeto.cfps; let idx = index;">
+            <th scope="row">{{idx+1}}</th>
+            <td>{{cfps.nome}}</td>
+            <td>{{cfps.telefone}}</td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="deletarCFPS(cfps)">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</form>
