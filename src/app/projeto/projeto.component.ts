@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileDropModule, UploadFile, UploadEvent } from 'ngx-file-drop/lib/ngx-drop';
 
 @Component({
   selector: 'app-projeto',
@@ -24,7 +25,7 @@ export class ProjetoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    
     this.projeto = {
       codigo: this.codigo,
       nome: "",
@@ -42,6 +43,25 @@ export class ProjetoComponent implements OnInit {
             ]
     }
 
+  }
+
+  public files: UploadFile[] = [];
+  
+  public dropped(event: UploadEvent) {
+    this.files = event.files;
+    for (var file of event.files) {
+      file.fileEntry.file(info => {
+        console.log(info);
+      });
+    }
+  }
+
+  public fileOver(event){
+    console.log(event);
+  }
+
+  public fileLeave(event){
+    console.log(event);
   }
 
   novo(){
@@ -67,6 +87,14 @@ export class ProjetoComponent implements OnInit {
     let index: number = this.projeto.cfps.indexOf(cfps);
     if (index !== -1) {
         this.projeto.cfps.splice(index, 1);
+    }
+  }
+
+  uploadFile(event) {
+    let files = event.target.files;
+    if (files.length > 0) {
+      console.log("file"); // You will see the file
+      // this.service.uploadFile(file);
     }
   }
 

@@ -7,6 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProjetoComponent } from './projeto/projeto.component';
 
+import { HttpModule } from '@angular/http';
+import { FileDropModule } from 'ngx-file-drop/lib/ngx-drop';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +18,9 @@ import { ProjetoComponent } from './projeto/projeto.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    FileDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
