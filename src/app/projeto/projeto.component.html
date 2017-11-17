@@ -8,30 +8,35 @@
     <div class="col-2">
       <button class="btn btn-primary" type="button" (click)="novo()">Novo</button>
     </div>
+    
     <div class="col-2">
       <button class="btn btn-secondary" type="button" (click)="novo()">
         <span class="ion-search"></span>
       </button>
     </div>
   </div>
+  
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Nome:</label>
     <div class="col-sm-6">
       <input type="text" class="form-control" value="{{projeto.nome}}">
     </div>
   </div>
+  
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Descrição:</label>
     <div class="col-md-6">
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" value="{{projeto.descricao}}"></textarea>
     </div>
   </div>
+  
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Status:</label>
     <div class="col-sm-6">
       <input type="text" class="form-control" value="{{projeto.status}}" disabled>
     </div>
   </div>
+  
   <div class="form-group row">
       <label class="col-sm-2 col-form-label">Arquivos:</label>
       <div class="col-sm-6">
@@ -54,6 +59,7 @@
         </div>
     </div>
   </div>
+  
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">GP Backup</label>
     <div class="col-sm-6">
@@ -84,6 +90,7 @@
       <input type="text" class="form-control" value="{{projeto.cliente.nome}}" disabled>
     </div>
   </div>
+  
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">CFPS</label>
     <div class="col col-md-6">
