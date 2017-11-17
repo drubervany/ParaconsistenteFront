@@ -2,18 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjetoComponent } from './projeto/projeto.component';
-
-import { HttpModule } from '@angular/http';
 import { FileDropModule } from 'ngx-file-drop/lib/ngx-drop';
+import { HttpModule } from '@angular/http';
+
+import { AuthGuard } from './guards/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './login/auth.service';
+import { ProjetoComponent } from './projeto/projeto.component';
+import { TomadaDesicaoComponent } from './tomada-desicao/tomada-desicao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjetoComponent
+    ProjetoComponent,
+    TomadaDesicaoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,7 @@ import { FileDropModule } from 'ngx-file-drop/lib/ngx-drop';
     HttpModule,
     FileDropModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,78 @@
+<h2 class="form-signin-heading">Tomada de Desição</h2>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Status</label>
+  <div class="col-sm-4">
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Em Cadastro</option>
+      <option>Staus 2</option>
+      <option>Staus 3</option>
+      <option>Staus 4</option>
+      <option>Staus 5</option>
+    </select>
+  </div>
+
+  <label class="col-sm-2 col-form-label">Cad. Pag.</label>
+  <div class="col-sm-2">
+      <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+</div>
+
+<hr />
+
+<div class="form-group row">
+  <div class="col-sm-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Projetos</th>
+        <tr>
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">Projeto</th>
+          <th scope="col">Gerente</th>
+          <th scope="col">PF</th>
+          <th scope="col">CFPS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projeto of projetos; let idx = index;">
+          <th scope="row">{{projeto.codigo}}</th>
+          <td>{{projeto.nome}}</td>
+          <td>{{projeto.gerente}}</td>
+          <td>{{projeto.pf}}</td>
+          <td>{{projeto.cfps}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="3" align="center" >GP</th>
+        </tr>  
+        <tr>
+          <th scope="col">CFPS</th>
+          <th scope="col">=</th>
+          <th scope="col">PF</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projeto of projetos; let idx = index;">
+          <th>{{projeto.cfps}}</th>
+          <td>v</td>
+          <td>{{projeto.pf}}</td>
+          <td>{{projeto.status}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
