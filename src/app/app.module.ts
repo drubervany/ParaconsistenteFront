@@ -11,13 +11,13 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
 import { ProjetoComponent } from './projeto/projeto.component';
-import { TomadaDesicaoComponent } from './tomada-desicao/tomada-desicao.component';
+import { tomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjetoComponent,
-    TomadaDesicaoComponent,
+    tomadaDecisaoComponent,
     LoginComponent
   ],
   imports: [
