@@ -12,7 +12,7 @@ export class ClienteService {
 
     consultar(cnpj: String) {
 
-        let api = `http://localhost:8080/paraconsistente/api/clientes/cnpj/${cnpj}`;
+        let api = `https://mighty-caverns-71018.herokuapp.com/paraconsistente/api/clientes/cnpj/${cnpj}`;
 
         console.log(api);
 
