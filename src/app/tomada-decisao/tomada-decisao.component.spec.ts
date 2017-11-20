@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { tomadaDecisaoComponent } from './tomada-decisao.component';
+import { TomadaDecisaoComponent } from './tomada-decisao.component';
 
 describe('TomadaDecicaoComponent', () => {
-  let component: tomadaDecisaoComponent;
-  let fixture: ComponentFixture<tomadaDecisaoComponent>;
+  let component: TomadaDecisaoComponent;
+  let fixture: ComponentFixture<TomadaDecisaoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ tomadaDecisaoComponent ]
+      declarations: [ TomadaDecisaoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(tomadaDecisaoComponent);
+    fixture = TestBed.createComponent(TomadaDecisaoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

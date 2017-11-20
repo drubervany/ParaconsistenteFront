@@ -41,12 +41,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let projeto of projetos; let idx = index;">
-          <th scope="row">{{projeto.codigo}}</th>
+        <tr *ngFor="let projeto of projetos">
+          <th scope="row">{{projeto.id}}</th>
           <td>{{projeto.nome}}</td>
-          <td>{{projeto.gerente}}</td>
+          <td>{{projeto.gerente.nome}}</td>
           <td>{{projeto.pf}}</td>
-          <td>{{projeto.cfps}}</td>
+          <td>{{projeto.cfps.nome}}</td>
         </tr>
       </tbody>
     </table>
@@ -66,8 +66,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let projeto of projetos; let idx = index;">
-          <th>{{projeto.cfps}}</th>
+        <tr *ngFor="let projeto of projetos">
+          <th>{{projeto.cfps.numeroPontos}}</th>
           <td>v</td>
           <td>{{projeto.pf}}</td>
           <td>{{projeto.status}}</td>

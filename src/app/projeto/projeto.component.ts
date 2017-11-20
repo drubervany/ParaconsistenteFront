@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileDropModule, UploadFile, UploadEvent } from 'ngx-file-drop/lib/ngx-drop';
+import { ProjetoService } from './projeto.service';
+import { ClienteService } from '../cliente/cliente.service';
+import { CfpsService } from '../cfps/cfps.service';
 
 @Component({
   selector: 'app-projeto',
@@ -12,37 +15,20 @@ export class ProjetoComponent implements OnInit {
 
   projeto: any = {};
 
-  codigo = 1;
-  
-  cfpsSelecionado: any = {codigo: 1, nome: "Luiz", telefone: "9999-3333"};
+  cfpsSelecionado: any = {};
 
-  cfpsAtivos: any = [
-                {codigo: 1, nome: "Luiz", telefone: "9999-3333"},
-                {codigo: 2, nome: "Maria", telefone: "3333-9999"},
-                {codigo: 3, nome: "Pedro", telefone: "3333-9999"}
-              ];
+  cfpsAtivos: any = [];
 
-  constructor() { }
+  constructor(private service: ProjetoService,
+              private clienteService: ClienteService,
+              private cfpsService: CfpsService) { 
+
+  }
 
   ngOnInit() {
-    
-    this.projeto = {
-      codigo: this.codigo,
-      nome: "",
-      descricao: "",
-      status: "Em Cadastro",
-      gpBackup: {codigo: 1, descricao: "GP BackUp"},
-      cliente: { 
-                cnpj: "45.578.205/0001-97",
-                nome: "Empresa Teste"
-              },
-      cfps: [
-              {codigo: 1, nome: "Luiz", telefone: "9999-3333"},
-              {codigo: 2, nome: "Maria", telefone: "3333-9999"},
-              {codigo: 3, nome: "Pedro", telefone: "3333-9999"}
-            ]
-    }
-
+  
+     this.novo();
+     this.cfpsService.consultarTodos().subscribe(cfps => this.cfpsAtivos = cfps);
   }
 
   public files: UploadFile[] = [];
@@ -65,17 +51,46 @@ export class ProjetoComponent implements OnInit {
   }
 
   novo(){
-    this.projeto = {};
-    this.projeto.codigo = ++this.codigo;
-    this.projeto.cliente = {};
-    this.projeto.cfps = [];
+     this.projeto = {
+      id: null,
+      nome: "",
+      descricao: "",
+      status: "CRIADO",
+      gpBackup: {codigo: "" , descricao: ""},
+      cliente: { 
+                cnpj: "",
+                nome: ""
+              },
+      cfps: []
+    } 
   }
 
   pesquisar(){
-    this.projeto.cliente = { 
-                              cnpj: "45.578.205/0001-97",
-                              nome: "Empresa Teste"
-                            };
+    this.service.consultar("1")
+                .subscribe(projeto => {
+                  console.log(projeto);
+                  this.projeto = projeto;
+                });
+  }
+
+  salvar(){
+    console.log(JSON.stringify(this.projeto));
+    this.service.salvar(this.projeto)
+                .subscribe(projeto => {
+                  console.log(projeto);
+                  this.projeto = projeto;
+                });
+  }
+
+  deletar(){
+    this.service.deletar(this.projeto);
+  }
+
+  pesquisarCliente(){
+   
+    this.clienteService.consultar(this.projeto.cliente.cnpj)
+                       .subscribe(cliente => this.projeto.cliente = cliente);
+    
   }
 
   adicionarCFPS(){

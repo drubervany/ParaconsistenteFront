@@ -1,27 +1,48 @@
 import { Injectable, EventEmitter  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from './usuario';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
 
-  private usuarioAutenticado: boolean = false;
+    errorMessage: String;
 
-  mostrarMenuEmitter = new EventEmitter<boolean>();
+    private usuarioAutenticado: boolean = false;
 
-  constructor(private router: Router) { }
+    mostrarMenuEmitter = new EventEmitter<boolean>();
 
-  fazerLogin(usuario: Usuario){
+    constructor(private router: Router,
+                private _http: Http) { }
 
-    this.usuarioAutenticado = true;
+    fazerLogin(usuario: Usuario) {
 
-    this.mostrarMenuEmitter.emit(this.usuarioAutenticado);
+        let api = `http://localhost:8080/paraconsistente/api/usuarios/${usuario.email}/${usuario.password}`;
 
-    this.router.navigate(['/projeto']);
-  }
+        console.log(api);
 
-  usuarioEstaAutenticado(){
-    return this.usuarioAutenticado;
-  }
+        this._http.get(api)
+        .map(result => result.json())
+        .subscribe(
+            usuarioLogin => {
+                console.log(usuarioLogin);
+                
+                if (usuario.password === usuarioLogin.senha){
+                    console.log(usuario);
+
+                    this.usuarioAutenticado = true;
+                    
+                    this.mostrarMenuEmitter.emit(this.usuarioAutenticado);
+                
+                    this.router.navigate(['/projeto']);
+                }
+            },
+            error =>  this.errorMessage = <any>error);            
+    }
+
+    usuarioEstaAutenticado(){
+        return this.usuarioAutenticado;
+    }
 }
 

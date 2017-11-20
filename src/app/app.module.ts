@@ -1,3 +1,4 @@
+import { CfpsService } from './cfps/cfps.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,13 +12,15 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './login/auth.service';
 import { ProjetoComponent } from './projeto/projeto.component';
-import { tomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
+import { ProjetoService } from './projeto/projeto.service';
+import { ClienteService } from './cliente/cliente.service';
+import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjetoComponent,
-    tomadaDecisaoComponent,
+    TomadaDecisaoComponent,
     LoginComponent
   ],
   imports: [
@@ -27,7 +30,11 @@ import { tomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.componen
     HttpModule,
     FileDropModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, 
+              AuthGuard, 
+              ProjetoService, 
+              ClienteService,
+              CfpsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
