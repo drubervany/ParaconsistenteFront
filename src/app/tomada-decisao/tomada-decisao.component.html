@@ -11,7 +11,7 @@
     </select>
   </div>
 
-  <label class="col-sm-2 col-form-label">Cad. Pag.</label>
+  <label class="col-sm-2 col-form-label">Cad. Projeto:</label>
   <div class="col-sm-2">
       <select class="form-control">
         <option>1</option>
@@ -67,8 +67,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let projeto of projetos">
-          <th>{{projeto.cfps.numeroPontos}}</th>
-          <td>v</td>
+          <td>
+            <select class="form-control" [(ngModel)]="cfpsSelecionado" name="Selecione CFPS"> 
+              <option *ngFor="let cfps of cfpsAtivos" [ngValue]="cfps">{{cfps.nome}}</option>
+            </select>
+          </td>
+          <td>=</td>
           <td>{{projeto.pf}}</td>
           <td>{{projeto.status}}</td>
         </tr>
