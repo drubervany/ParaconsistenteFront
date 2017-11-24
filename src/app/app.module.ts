@@ -15,13 +15,15 @@ import { ProjetoComponent } from './projeto/projeto.component';
 import { ProjetoService } from './projeto/projeto.service';
 import { ClienteService } from './cliente/cliente.service';
 import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
+import { ContagemComponent } from './contagem/contagem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjetoComponent,
     TomadaDecisaoComponent,
-    LoginComponent
+    LoginComponent,
+    ContagemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,140 @@
+<div class="form-group row">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Tipo função</th>
+          <th scope="col">Complexidade funcional</th>
+          <th scope="col" colspan="2">Total da complexidade</th>
+          <th scope="col">Total do tipo de função</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" rowspan=3 style="align: center" >ALI</th>
+          <td>
+            <input [(ngModel)]="ali.baixa.qtde" type="text" name="ali-baixo" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Baixa</td>
+          <td>x {{ali.baixa.ponto}}={{aliBaixaTotal}}</td>
+          <th scope="row" rowspan=3 style="align: center" >{{ali.total}}</th>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="ali.media.qtde" type="text" name="ali-media" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Media</td>
+          <td>x {{ali.media.ponto}}={{aliMediaTotal}}</td>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="ali.alta.qtde" type="text" name="ali-alta" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Alta</td>
+          <td>x {{ali.alta.ponto}}={{aliAltaTotal}}</td>
+        </tr>
+        <tr>
+          <th scope="row" rowspan=3 style="align: center" >AIE</th>
+          <td>
+            <input [(ngModel)]="aie.baixa.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Baixa</td>
+          <td>x {{aie.baixa.ponto}}={{aieBaixaTotal}}</td>
+          <th scope="row" rowspan=3 style="align: center" >{{aie.total}}</th>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="aie.media.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Media</td>
+          <td>x {{aie.media.ponto}}={{aieMediaTotal}}</td>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="aie.alta.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Alta</td>
+          <td>x {{aie.alta.ponto}}={{aieAltaTotal}}</td>
+        </tr>
+      
+        <tr>
+          <th scope="row" rowspan=3 style="align: center" >EE</th>
+          <td>
+            <input [(ngModel)]="ee.baixa.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Baixa</td>
+          <td>x {{ee.baixa.ponto}}={{eeBaixaTotal}}</td>
+          <th scope="row" rowspan=3 style="align: center" >{{ee.total}}</th>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="ee.media.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Media</td>
+          <td>x {{ee.media.ponto}}={{eeMediaTotal}}</td>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="ee.alta.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Alta</td>
+          <td>x {{ee.alta.ponto}}={{eeAltaTotal}}</td>
+        </tr>
+
+        <tr>
+          <th scope="row" rowspan=3 style="align: center" >SE</th>
+          <td>
+            <input [(ngModel)]="se.baixa.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Baixa</td>
+          <td>x {{se.baixa.ponto}}={{seBaixaTotal}}</td>
+          <th scope="row" rowspan=3 style="align: center" >{{se.total}}</th>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="se.media.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Media</td>
+          <td>x {{se.media.ponto}}={{seMediaTotal}}</td>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="se.alta.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Alta</td>
+          <td>x {{se.alta.ponto}}={{seAltaTotal}}</td>
+        </tr>
+
+        <tr>
+          <th scope="row" rowspan=3 style="align: center" >CE</th>
+          <td>
+            <input [(ngModel)]="ce.baixa.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Baixa</td>
+          <td>x {{ce.baixa.ponto}}={{ceBaixaTotal}}</td>
+          <th scope="row" rowspan=3 style="align: center" >{{ce.total}}</th>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="ce.media.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Media</td>
+          <td>x {{ce.media.ponto}}={{ceMediaTotal}}</td>
+        </tr>
+        <tr>
+          <td>
+            <input [(ngModel)]="ce.alta.qtde" type="text" name="aie-baixa" class="form-control" placeholder="qtde" required autofocus>
+          </td>
+          <td>Alta</td>
+          <td>x {{ce.alta.ponto}}={{ceAltaTotal}}</td>
+        </tr>
+        <tr>
+          <th colspan="4" scope="row">
+            Total
+          </th>
+          <th scope="row">{{total}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
