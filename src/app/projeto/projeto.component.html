@@ -1,15 +1,20 @@
 <h2 class="form-signin-heading">Cadastrar Projeto</h2>
-<form>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Codigo</label>
-    <div class="col">
+    <div class="col-sm-2">
       <input type="text" class="form-control" disabled value="{{projeto.id}}">
     </div>
     <div class="col-2">
       <button class="btn btn-primary" type="button" (click)="novo()">Novo</button>
     </div>
     
+    <label class="col-sm-2 col-form-label">Projeto:</label>
     <div class="col-2">
+      <select class="form-control" [(ngModel)]="projetoSelecionado" name="Selecione CFPS"> 
+        <option *ngFor="let projeto of projetosAtivos" [ngValue]="projeto">{{projeto.id}} - {{projeto.nome}}</option>
+      </select>
+    </div>
+    <div class="col">
       <button class="btn btn-secondary" type="button" (click)="pesquisar()">
         <span class="ion-search"></span>
       </button>
@@ -76,7 +81,7 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">CNPJ:</label>
     <div class="col col-md-6">
-      <input [(ngModel)]="projeto.cliente.cnpj" type="text" name="inputEmail" class="form-control" placeholder="Cnpj do Cliente" required autofocus>
+      <input [(ngModel)]="cnpjPesquisa" type="text" name="inputEmail" class="form-control" placeholder="Cnpj do Cliente" required autofocus>
     </div>
     <div class="col-2">
       <button class="btn btn-secondary" type="button" (click)="pesquisarCliente()">
@@ -132,14 +137,31 @@
     </div>
   </div>
   <div class="form-group row">
-  <div class="col-2">
-    <button class="btn btn-primary" type="button" (click)="salvar()">Salvar</button>
+    <div class="col-2">
+      <button [swal]="successSwal" class="btn btn-primary" type="button" (click)="salvar()">Salvar</button>
+    </div>
+    
+    <div class="col-2">
+      <button *ngIf="projeto.id!=null"  [swal]="deleteSwal" class="btn btn-danger" type="button" (click)="deletar()">Deletar</button>
+    </div>
   </div>
-  
-  <div class="col-2">
-    <button class="btn btn-danger" type="button" (click)="deletar()">Deletar</button>
-  </div>
-</div>
 
+<swal 
+  #successSwal
+  timer=2500
+  position="top-right"
+  title="Salvo com sucesso!"
+  type="success"
+  [showCancelButton]="false"
+  [focusCancel]="false">
+</swal>
 
-</form>
+<swal 
+#deleteSwal
+timer=2500
+position="top-right"
+title="Excluido com sucesso!"
+type="error"
+[showCancelButton]="false"
+[focusCancel]="false">
+</swal>

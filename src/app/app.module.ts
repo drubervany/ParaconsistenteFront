@@ -16,6 +16,7 @@ import { ProjetoService } from './projeto/projeto.service';
 import { ClienteService } from './cliente/cliente.service';
 import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
 import { ContagemComponent } from './contagem/contagem.component';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,13 @@ import { ContagemComponent } from './contagem/contagem.component';
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    FileDropModule
+    FileDropModule,
+    SweetAlert2Module.forRoot({
+        buttonsStyling: false,
+        customClass: 'modal-content',
+        confirmButtonClass: 'btn btn-primary',
+        cancelButtonClass: 'btn'
+    })
   ],
   providers: [AuthService, 
               AuthGuard, 

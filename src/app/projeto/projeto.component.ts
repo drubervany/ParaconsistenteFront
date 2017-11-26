@@ -1,3 +1,4 @@
+import { CFPS } from './../login/cfps';
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,6 +6,8 @@ import { FileDropModule, UploadFile, UploadEvent } from 'ngx-file-drop/lib/ngx-d
 import { ProjetoService } from './projeto.service';
 import { ClienteService } from '../cliente/cliente.service';
 import { CfpsService } from '../cfps/cfps.service';
+import * as swal from 'sweetalert2';
+import { Projeto } from './projeto';
 
 @Component({
   selector: 'app-projeto',
@@ -13,22 +16,27 @@ import { CfpsService } from '../cfps/cfps.service';
 })
 export class ProjetoComponent implements OnInit {
 
-  projeto: any = {};
+  projeto: Projeto;
 
-  cfpsSelecionado: any = {};
+  cnpjPesquisa: String;
+  projetoSelecionado: Projeto;
+  cfpsSelecionado: CFPS;
 
-  cfpsAtivos: any = [];
+  cfpsAtivos: CFPS[] = new Array<CFPS>();
+  projetosAtivos: Projeto[] = new Array<Projeto>();
 
   constructor(private service: ProjetoService,
               private clienteService: ClienteService,
-              private cfpsService: CfpsService) { 
-
+              private cfpsService: CfpsService,
+              ) { 
+    
   }
 
   ngOnInit() {
   
      this.novo();
      this.cfpsService.consultarTodos().subscribe(cfps => this.cfpsAtivos = cfps);
+     this.service.consultarTodos().subscribe(projetos => this.projetosAtivos = projetos);
   }
 
   public files: UploadFile[] = [];
@@ -51,35 +59,29 @@ export class ProjetoComponent implements OnInit {
   }
 
   novo(){
-     this.projeto = {
-      id: null,
-      nome: "",
-      descricao: "",
-      status: "CRIADO",
-      gpBackup: {codigo: "" , descricao: ""},
-      cliente: { 
-                cnpj: "",
-                nome: ""
-              },
-      cfps: []
-    } 
+     this.projeto = new Projeto();     
   }
 
   pesquisar(){
-    this.service.consultar("1")
+    this.service.consultar(this.projetoSelecionado.id)
                 .subscribe(projeto => {
                   console.log(projeto);
                   this.projeto = projeto;
+                  this.cnpjPesquisa = this.projeto.cliente.cnpj;
                 });
   }
 
   salvar(){
     console.log(JSON.stringify(this.projeto));
-    this.service.salvar(this.projeto)
+    
+
+    /* this.service.salvar(this.projeto)
                 .subscribe(projeto => {
-                  console.log(projeto);
-                  this.projeto = projeto;
-                });
+                  //this.projeto = projeto;
+
+                  
+
+                }); */
   }
 
   deletar(){
@@ -88,7 +90,7 @@ export class ProjetoComponent implements OnInit {
 
   pesquisarCliente(){
    
-    this.clienteService.consultar(this.projeto.cliente.cnpj)
+    this.clienteService.consultar(this.cnpjPesquisa)
                        .subscribe(cliente => this.projeto.cliente = cliente);
     
   }

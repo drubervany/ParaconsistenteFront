@@ -17,76 +17,7 @@ export class ContagemComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ali = { total: 0,
-                baixa: { qtde: 0,
-                        ponto: 7,
-                        total: 0
-                      },
-                media: { qtde: 0,
-                  ponto: 10,
-                  total: 0
-                },
-                alta: { qtde: 0,
-                  ponto: 15,
-                  total: 0
-                }
-              };
-    this.aie = { total: 0,
-                  baixa: { qtde: 0,
-                          ponto: 5,
-                          total: 0
-                        },
-                  media: { qtde: 0,
-                    ponto: 7,
-                    total: 0
-                  },
-                  alta: { qtde: 0,
-                    ponto: 10,
-                    total: 0
-                  }
-                };
-    this.ee = { total: 0,
-                baixa: { qtde: 0,
-                        ponto: 3,
-                        total: 0
-                      },
-                media: { qtde: 0,
-                  ponto: 4,
-                  total: 0
-                },
-                alta: { qtde: 0,
-                  ponto: 6,
-                  total: 0
-                }
-              };
-    this.se = { total: 0,
-                baixa: { qtde: 0,
-                        ponto: 4,
-                        total: 0
-                      },
-                media: { qtde: 0,
-                  ponto: 5,
-                  total: 0
-                },
-                alta: { qtde: 0,
-                  ponto: 7,
-                  total: 0
-                }
-              };
-    this.ce= { total: 0,
-                baixa: { qtde: 0,
-                        ponto: 3,
-                        total: 0
-                      },
-                media: { qtde: 0,
-                  ponto: 4,
-                  total: 0
-                },
-                alta: { qtde: 0,
-                  ponto: 6,
-                  total: 0
-                }
-              };
+    this.limpar();
 
   }
 
@@ -224,6 +155,87 @@ export class ContagemComponent implements OnInit {
 
     return ali+aie+ee+se+ce;
 
+  }
+
+  salvar(){
+    console.log("Salvar");
+  }
+
+  deletar(){
+    console.log("deletar");
+  }
+
+  limpar(){
+    this.ali = { total: 0,
+                baixa: { qtde: 0,
+                        ponto: 7,
+                        total: 0
+                      },
+                media: { qtde: 0,
+                  ponto: 10,
+                  total: 0
+                },
+                alta: { qtde: 0,
+                  ponto: 15,
+                  total: 0
+                }
+              };
+    this.aie = { total: 0,
+            baixa: { qtde: 0,
+                    ponto: 5,
+                    total: 0
+                  },
+            media: { qtde: 0,
+              ponto: 7,
+              total: 0
+            },
+            alta: { qtde: 0,
+              ponto: 10,
+              total: 0
+            }
+          };
+    this.ee = { total: 0,
+          baixa: { qtde: 0,
+                  ponto: 3,
+                  total: 0
+                },
+          media: { qtde: 0,
+            ponto: 4,
+            total: 0
+          },
+          alta: { qtde: 0,
+            ponto: 6,
+            total: 0
+          }
+        };
+    this.se = { total: 0,
+          baixa: { qtde: 0,
+                  ponto: 4,
+                  total: 0
+                },
+          media: { qtde: 0,
+            ponto: 5,
+            total: 0
+          },
+          alta: { qtde: 0,
+            ponto: 7,
+            total: 0
+          }
+        };
+    this.ce= { total: 0,
+          baixa: { qtde: 0,
+                  ponto: 3,
+                  total: 0
+                },
+          media: { qtde: 0,
+            ponto: 4,
+            total: 0
+          },
+          alta: { qtde: 0,
+            ponto: 6,
+            total: 0
+          }
+        };
   }
 }
 
