@@ -10,8 +10,8 @@ export class CfpsService {
 
     consultarTodos() {
 
-        //let api = `https://mighty-caverns-71018.herokuapp.com/paraconsistente/api/cfps/`;
-        let api = `http://localhost:8080/paraconsistente/api/cfps/`;
+        let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/cfps/`;
+        //let api = `http://localhost:8080/paraconsistente/api/cfps/`;
 
         console.log(api);
 
