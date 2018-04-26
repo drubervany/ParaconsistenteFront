@@ -1,0 +1,43 @@
+<h2 class="form-signin-heading">Cadastro Função</h2>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Nome:</label>
+  <div class="col-sm-6">
+    <input type="text" class="form-control" value="{{funcao.nome}}">
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-success" (click)="adicionarFuncao()">
+      <span class="ion-plus-round"></span>
+    </button>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Função</th>
+      <th scope="col">Complexidade Funcional</th>
+      <th scope="col">Tipo Dados</th>
+      <th scope="col">Tipo Registro</th>
+      <th scope="col">Total Ponto Função</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <select class="form-control" [(ngModel)]="funcaoSelecionada" name="Selecione a função"> 
+          <option *ngFor="let funcao of funcoes" [ngValue]="funcao">{{funcao.nome}}</option>
+        </select>
+      </td>
+      <td>
+        <select class="form-control" [(ngModel)]="tipoFuncaoSelecionado" name="Selecione o tipo"> 
+          <option *ngFor="let tipo of tiposFuncao" [ngValue]="tipo">{{tipo.nome}}</option>
+        </select>
+      </td>
+      <td>
+        <input [(ngModel)]="totalTipoDados" type="text" name="Total tipo de dados" class="form-control" placeholder="total" required autofocus>
+      </td>
+      <td>
+        <input [(ngModel)]="totalTipoRegistro" type="text" name="Total tipo de registro" class="form-control" placeholder="total" required autofocus>
+      </td>
+    </tr>
+  </tbody>
+</table>
