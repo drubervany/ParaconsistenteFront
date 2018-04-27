@@ -1,3 +1,5 @@
+import { TipoFuncao } from './tipoFuncao';
+import { Funcao } from './funcao';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,27 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroContagemComponent implements OnInit {
 
-  funcao: any = {};
-  funcaoSelecionada: any = {};
-  funcoes: String[] = Array<String>();
-
-  tiposFuncao: String[] = [
-    {"codigo": 1, "nome":"ALI", "descricao":"" },
-    {"codigo": 2, "nome":"AIE", "descricao":"" },
-    {"codigo": 3, "nome":"EE", "descricao":"" },
-    {"codigo": 4, "nome":"SE", "descricao":"" },
-    {"codigo": 5, "nome":"CE", "descricao":"" }
-  ];
-    
+  funcao: Funcao;
+  funcoes: Funcao[] = Array<Funcao>();
+   
   constructor() { }
 
   ngOnInit() {
-
+    this.funcao = new Funcao();
   }
 
-  adicionarFuncao(){
-    console.log(this.funcoes);
+  adicionar(){
+    this.funcao.id = (this.funcoes.length+1)+"";
+    console.log(this.funcao);
     this.funcoes.push(this.funcao);
+    console.log("funcao", this.funcoes);
+    this.funcao = new Funcao();
+  }
+
+  deletar(funcao){
+    let index: number = this.funcoes.indexOf(funcao);
+    if (index !== -1) {
+        this.funcoes.splice(index, 1);
+    }
   }
 }
 

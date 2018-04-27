@@ -15,8 +15,9 @@ import { ProjetoComponent } from './projeto/projeto.component';
 import { ProjetoService } from './projeto/projeto.service';
 import { ClienteService } from './cliente/cliente.service';
 import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
-import { ContagemComponent } from './contagem/contagem.component';
+import { CadastroContagemComponent } from './contagem/cadastro-contagem.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { ComplexidadeContagemComponent } from './contagem/complexidade-contagem.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
     ProjetoComponent,
     TomadaDecisaoComponent,
     LoginComponent,
-    ContagemComponent
+    CadastroContagemComponent,
+    ComplexidadeContagemComponent
   ],
   imports: [
     BrowserModule,

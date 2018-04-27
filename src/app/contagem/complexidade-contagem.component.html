@@ -1,0 +1,44 @@
+<h2 class="form-signin-heading">Complexidade Funcional</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Função</th>
+      <th scope="col">Tipo Função</th>
+      <th scope="col">Tipo Dados</th>
+      <th scope="col">Tipo Registro</th>
+      <th scope="col">Total Ponto Função</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tipoFuncao of tiposFuncoes; let idx = index;">
+      <td>
+        <select class="form-control" [(ngModel)]="tipoFuncao.funcao" name="Selecione a função"> 
+          <option *ngFor="let funcao of funcoes" [ngValue]="funcao">{{funcao.nome}}</option>
+        </select>
+      </td>
+      <td>
+        <select class="form-control" [(ngModel)]="tipoFuncao.tipo" name="Selecione o tipo"> 
+          <option *ngFor="let tipo of tiposFuncao" [ngValue]="tipo">{{tipo.nome}}</option>
+        </select>
+      </td>
+      <td>
+        <input [(ngModel)]="tipoFuncao.qtdeDados" type="number" name="Total tipo de dados" class="form-control" placeholder="total" required autofocus>
+      </td>
+      <td>
+        <input [(ngModel)]="tipoFuncao.qtdeRegistros" type="number" name="Total tipo de registro" class="form-control" placeholder="total" required autofocus>
+      </td>
+      <td>
+        <input type="text" class="form-control" value="{{tipoFuncao.totalPonfoFuncao}}" disabled>
+      </td>
+      <td>
+        <button type="button" class="btn btn-success" (click)="adicionar()" *ngIf="!tipoFuncao.incluido">
+          <span class="ion-plus-round"></span>
+        </button>
+        <button type="button" class="btn btn-danger" (click)="deletar(tipoFuncao)" *ngIf="tipoFuncao.incluido">
+          <span class="ion-close-round Deletar"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
