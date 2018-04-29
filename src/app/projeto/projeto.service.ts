@@ -1,6 +1,6 @@
 import { Injectable  } from '@angular/core';
 import { Router } from '@angular/router';
-import { Projeto } from './projeto';
+import { Projeto } from './projeto.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 

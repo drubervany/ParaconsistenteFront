@@ -1,4 +1,4 @@
-import { Funcao } from "./funcao";
+import { Funcao } from "./funcao.model";
 
 export class TipoFuncao {
     funcao: Funcao;

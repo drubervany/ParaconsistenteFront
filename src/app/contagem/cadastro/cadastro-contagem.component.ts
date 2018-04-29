@@ -1,5 +1,5 @@
-import { Funcao } from '../funcao';
 import { Component, OnInit } from '@angular/core';
+import { Funcao } from '../funcao.model';
 
 @Component({
   selector: 'app-contagem',

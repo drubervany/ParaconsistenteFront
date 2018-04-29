@@ -1,6 +1,6 @@
-import { TipoFuncao } from '../tipoFuncao';
-import { Funcao } from '../funcao';
 import { Component, OnInit, Input } from '@angular/core';
+import { Funcao } from '../funcao.model';
+import { TipoFuncao } from '../tipo-funcao.model';
 
 @Component({
   selector: 'complexidade-contagem',

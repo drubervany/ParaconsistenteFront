@@ -1,5 +1,5 @@
-import { CFPS } from './../login/cfps';
-import { Gerente } from './../login/gerente';
+import { CFPS } from './../login/cfps.model';
+import { Gerente } from './../login/gerente.model';
 import { Cliente } from '../cliente/cliente';
 export class Projeto {
 

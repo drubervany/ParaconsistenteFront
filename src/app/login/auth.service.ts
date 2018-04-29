@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter  } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from './usuario';
+import { Usuario } from './usuario.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 

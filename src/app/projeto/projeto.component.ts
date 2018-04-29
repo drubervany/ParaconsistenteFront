@@ -1,4 +1,3 @@
-import { CFPS } from './../login/cfps';
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,8 +5,8 @@ import { FileDropModule, UploadFile, UploadEvent } from 'ngx-file-drop/lib/ngx-d
 import { ProjetoService } from './projeto.service';
 import { ClienteService } from '../cliente/cliente.service';
 import { CfpsService } from '../cfps/cfps.service';
-import * as swal from 'sweetalert2';
-import { Projeto } from './projeto';
+import { CFPS } from './../login/cfps.model';
+import { Projeto } from './projeto.model';
 
 @Component({
   selector: 'app-projeto',
