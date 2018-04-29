@@ -5,7 +5,7 @@ import { AuthGuard } from './guards/auth.guard'
 import { LoginComponent } from './login/login.component';
 import { ProjetoComponent } from './projeto/projeto.component';
 import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
-import { CadastroContagemComponent } from './contagem/cadastro-contagem.component';
+import { CadastroContagemComponent } from './contagem/cadastro/cadastro-contagem.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },

@@ -1,5 +1,5 @@
-import { TipoFuncao } from './tipoFuncao';
-import { Funcao } from './funcao';
+import { TipoFuncao } from '../tipoFuncao';
+import { Funcao } from '../funcao';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
