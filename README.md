@@ -1,7 +1,12 @@
 # Paraconsistente
 
-##Front End
-https://getbootstrap.com
+## Front End
+
+Bootstrap: [visualizar](https://getbootstrap.com)
+
+## Edidor Codigo
+
+download: [VSCODE](https://code.visualstudio.com/docs/?dv=win)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
 
