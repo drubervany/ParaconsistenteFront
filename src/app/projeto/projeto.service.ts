@@ -13,8 +13,8 @@ export class ProjetoService {
     constructor(private router: Router,
         private _http: Http) {}
         
-    private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/`;
-    //private api = `http://localhost:8080/paraconsistente/api/projetos/`;
+    //private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/`;
+    private api = `http://localhost:8080/paraconsistente/api/projetos/`;
 
     consultarTodos() {
         
@@ -38,7 +38,7 @@ export class ProjetoService {
                     
     }
 
-    salvar(projeto: any) {
+    salvar(projeto: Projeto) {
     
         console.log(this.api);
 
@@ -46,20 +46,19 @@ export class ProjetoService {
                     
     }
 
-    atualizar(projeto: any) {
-      
-        let api = this.api + projeto.codigo;
+    atualizar(projeto: Projeto) {
+        let api = this.api + projeto.id;
 
         console.log(api);
 
-        return this._http.put(api, JSON.stringify(projeto))
+        return this._http.put(api, projeto)
         .map(result => result.json());
                     
     }
 
-    deletar(projeto: any) {
+    deletar(projeto: Projeto) {
         
-        let api = this.api + projeto.codigo;
+        let api = this.api + projeto.id;
 
         console.log(api);
 

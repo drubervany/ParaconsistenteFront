@@ -18,11 +18,15 @@ import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.componen
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { CadastroContagemComponent } from './contagem/cadastro/cadastro-contagem.component';
 import { ComplexidadeContagemComponent } from './contagem/complexidade/complexidade-contagem.component';
+import { CFPSSelecionarComponent } from './projeto/cfps/selecionar/cfps-selecionar.component';
+import { ClienteSelecionarComponent } from './projeto/cliente/selecionar/cliente-selecionar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjetoComponent,
+    CFPSSelecionarComponent,
+    ClienteSelecionarComponent,
     TomadaDecisaoComponent,
     LoginComponent,
     CadastroContagemComponent,

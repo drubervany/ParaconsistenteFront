@@ -1,4 +1,4 @@
-<h2 class="form-signin-heading">Cadastrar Projeto</h2>
+<h2 class="form-signin-heading">Projeto</h2>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Codigo</label>
     <div class="col-sm-2">
@@ -78,64 +78,10 @@
     </div>
   </div>
 
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">CNPJ:</label>
-    <div class="col col-md-6">
-      <input [(ngModel)]="cnpjPesquisa" type="text" name="inputEmail" class="form-control" placeholder="Cnpj do Cliente" required autofocus>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-secondary" type="button" (click)="pesquisarCliente()">
-        <span class="ion-search"></span>
-      </button>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Cliente:</label>
-    <div class="col-sm-6">
-      <input type="text" class="form-control" value="{{projeto.cliente.nome}}" disabled>
-    </div>
-  </div>
+  <cliente-selecionar [projeto]="projeto"></cliente-selecionar>
   
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">CFPS</label>
-    <div class="col col-md-6">
-      <select class="form-control" [(ngModel)]="cfpsSelecionado" name="Selecione CFPS"> 
-        <option *ngFor="let cfps of cfpsAtivos" [ngValue]="cfps">{{cfps.nome}}</option>
-      </select>
-    </div>
-    <div class="col-2">
-      <button type="button" class="btn btn-success" (click)="adicionarCFPS()">
-        <span class="ion-plus-round"></span>
-      </button>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">CFPS Selecionados:</label>
-    <div class="col-sm-8">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">Remover</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let cfps of projeto.cfps; let idx = index;">
-            <th scope="row">{{idx+1}}</th>
-            <td>{{cfps.nome}}</td>
-            <td>{{cfps.telefone}}</td>
-            <td>
-              <button type="button" class="btn btn-danger" (click)="deletarCFPS(cfps)">
-                <span class="ion-close-round Deletar"></span>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <cfps-selecionar [projeto]="projeto"></cfps-selecionar>
+
   <div class="form-group row">
     <div class="col-2">
       <button [swal]="successSwal" class="btn btn-primary" type="button" (click)="salvar()">Salvar</button>
