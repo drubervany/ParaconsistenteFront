@@ -1,7 +1,8 @@
-<h2 class="form-signin-heading">Complexidade Funcional</h2>
+<h2 class="form-signin-heading">Complexidade</h2>
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">#</th>
       <th scope="col">Função</th>
       <th scope="col">Tipo Função</th>
       <th scope="col">Tipo Dados</th>
@@ -12,30 +13,31 @@
   </thead>
   <tbody>
     <tr *ngFor="let tipoFuncao of tiposFuncoes; let idx = index;">
+      <th scope="row">{{tipoFuncao.id}}</th>
       <td>
-        <select class="form-control" [(ngModel)]="tipoFuncao.funcao" name="Selecione a função"> 
-          <option *ngFor="let funcao of funcoes" [ngValue]="funcao">{{funcao.nome}}</option>
+        <select class="form-control" [(ngModel)]="tipoFuncao.funcao.id" name="Selecione a função" [disabled]="tipoFuncao.id"> 
+          <option *ngFor="let funcao of funcoes" [ngValue]="funcao.id">{{funcao.nome}}</option>
         </select>
       </td>
       <td>
-        <select class="form-control" [(ngModel)]="tipoFuncao.tipo" name="Selecione o tipo"> 
-          <option *ngFor="let tipo of tiposFuncao" [ngValue]="tipo">{{tipo.nome}}</option>
+        <select class="form-control" [(ngModel)]="tipoFuncao.tipo" name="Selecione o tipo" [disabled]="tipoFuncao.id"> 
+          <option *ngFor="let tipo of tiposFuncao" [ngValue]="tipo.nome">{{tipo.nome}}</option>
         </select>
       </td>
       <td>
-        <input [(ngModel)]="tipoFuncao.qtdeDados" type="number" name="Total tipo de dados" class="form-control" placeholder="total" required autofocus>
+        <input [(ngModel)]="tipoFuncao.qtdeDados" type="number" name="Total tipo de dados" class="form-control" placeholder="total" [disabled]="tipoFuncao.id">
       </td>
       <td>
-        <input [(ngModel)]="tipoFuncao.qtdeRegistros" type="number" name="Total tipo de registro" class="form-control" placeholder="total" required autofocus>
+        <input [(ngModel)]="tipoFuncao.qtdeRegistros" type="number" name="Total tipo de registro" class="form-control" placeholder="total" [disabled]="tipoFuncao.id">
       </td>
       <td>
         <input type="text" class="form-control" value="{{tipoFuncao.totalPonfoFuncao}}" disabled>
       </td>
       <td>
-        <button type="button" class="btn btn-success" (click)="adicionar()" *ngIf="!tipoFuncao.incluido">
+        <button type="button" class="btn btn-success" (click)="adicionar();" *ngIf="!tipoFuncao.id">
           <span class="ion-plus-round"></span>
         </button>
-        <button type="button" class="btn btn-danger" (click)="deletar(tipoFuncao)" *ngIf="tipoFuncao.incluido">
+        <button type="button" class="btn btn-danger" (click)="deletar(tipoFuncao)" *ngIf="tipoFuncao.id">
           <span class="ion-close-round Deletar"></span>
         </button>
       </td>

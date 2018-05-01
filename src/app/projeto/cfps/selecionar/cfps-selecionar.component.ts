@@ -23,7 +23,8 @@ export class CFPSSelecionarComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.cfpsService.consultarTodos().subscribe(cfps => this.cfpsAtivos = cfps);
+    console.log("ClienteSelecionar", this.projeto);
+    this.cfpsService.consultarTodos().subscribe(cfps => this.cfpsAtivos = cfps);
   }
   
   selecionar(){

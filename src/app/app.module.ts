@@ -20,6 +20,10 @@ import { CadastroContagemComponent } from './contagem/cadastro/cadastro-contagem
 import { ComplexidadeContagemComponent } from './contagem/complexidade/complexidade-contagem.component';
 import { CFPSSelecionarComponent } from './projeto/cfps/selecionar/cfps-selecionar.component';
 import { ClienteSelecionarComponent } from './projeto/cliente/selecionar/cliente-selecionar.component';
+import { GerenteService } from './gerente/gerente.service';
+import { GerenteSelecionarComponent } from './projeto/gerente/selecionar/gerente-selecionar.component';
+import { MedicaoService } from './contagem/medicao.service';
+import { FuncaoService } from './contagem/funcao.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,7 @@ import { ClienteSelecionarComponent } from './projeto/cliente/selecionar/cliente
     ProjetoComponent,
     CFPSSelecionarComponent,
     ClienteSelecionarComponent,
+    GerenteSelecionarComponent,
     TomadaDecisaoComponent,
     LoginComponent,
     CadastroContagemComponent,
@@ -49,7 +54,10 @@ import { ClienteSelecionarComponent } from './projeto/cliente/selecionar/cliente
               AuthGuard, 
               ProjetoService, 
               ClienteService,
-              CfpsService],
+              CfpsService,
+              GerenteService,
+              MedicaoService,
+              FuncaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

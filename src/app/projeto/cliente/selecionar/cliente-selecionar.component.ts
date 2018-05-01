@@ -20,6 +20,7 @@ export class ClienteSelecionarComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("ClienteSelecionar", this.projeto);
     this.cnpjPesquisa = this.projeto.cliente.cnpj;
   }
 
