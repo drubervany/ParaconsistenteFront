@@ -1,4 +1,5 @@
 export class CFPS {
     id: String;
-    descricao: String;
+    nome: String;
+    numeroPontos: number = 0;
 }

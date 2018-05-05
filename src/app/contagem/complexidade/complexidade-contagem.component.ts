@@ -3,6 +3,7 @@ import { Funcao } from '../funcao.model';
 import { Medicao } from '../medicao.model';
 import { MedicaoService } from '../medicao.service';
 import { NgTemplateOutlet } from '@angular/common';
+import { CFPS } from '../../login/cfps.model';
 
 @Component({
   selector: 'complexidade-contagem',
@@ -12,6 +13,7 @@ import { NgTemplateOutlet } from '@angular/common';
 export class ComplexidadeContagemComponent implements OnInit {
 
   @Input() funcoes: Funcao[];
+  @Input() cfps: CFPS;
 
   tipoFuncao: Medicao;
   tiposFuncoes: Medicao[] = new Array<Medicao>();
@@ -25,10 +27,13 @@ export class ComplexidadeContagemComponent implements OnInit {
   ];
     
   constructor(public medicaoService: MedicaoService ) {
-  
+    console.log("cfps logado:", this.cfps);
   }
 
   ngOnInit() {
+    
+    console.log("cfps logado:", this.cfps);
+    
     this.medicaoService.consultarTodos().subscribe(medicao => {
       console.log("medicao", medicao);
       if (medicao!==null){
@@ -42,6 +47,7 @@ export class ComplexidadeContagemComponent implements OnInit {
   adicionar(){
     this.tipoFuncao.totalPonfoFuncao = this.totalPonfoFuncao;
     console.log("tipoFuncao", this.tipoFuncao);
+    this.tipoFuncao.cfps = this.cfps;
     this.medicaoService.salvar(this.tipoFuncao)
                       .subscribe(tipoFuncao => {
                         console.log("tipoFuncao", tipoFuncao)

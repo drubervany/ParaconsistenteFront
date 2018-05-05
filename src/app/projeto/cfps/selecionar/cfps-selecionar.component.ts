@@ -17,8 +17,7 @@ export class CFPSSelecionarComponent implements OnInit {
   cfpsSelecionado: CFPS;
   cfpsAtivos: CFPS[] = new Array<CFPS>();
   
-  constructor(private cfpsService: CfpsService,
-              ) { 
+  constructor(private cfpsService: CfpsService) { 
     
   }
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Funcao } from '../funcao.model';
 import { FuncaoService } from '../funcao.service';
+import { CfpsService } from '../../cfps/cfps.service';
 import { Location } from '@angular/common';
+import { CFPS } from '../../login/cfps.model';
 
 @Component({
   selector: 'app-contagem',
@@ -11,13 +13,19 @@ import { Location } from '@angular/common';
 export class CadastroContagemComponent implements OnInit {
 
   funcao: Funcao;
+  cfps: CFPS;
   funcoes: Funcao[] = Array<Funcao>();
    
-  constructor(public funcaoService: FuncaoService) { }
+  constructor(public funcaoService: FuncaoService,
+              public cfpsService: CfpsService) { }
 
   ngOnInit() {
     this.funcao = new Funcao();
     this.funcaoService.consultarTodos().subscribe(funcoes => this.funcoes = funcoes);
+    this.cfpsService.consultarTodos().subscribe(cfpss => {
+      this.cfps = cfpss[0]
+      console.log("logado cfps", cfpss, this.cfps);
+    });
   }
 
   adicionar(){
@@ -48,4 +56,5 @@ export class CadastroContagemComponent implements OnInit {
     }
   }
 }
+
 

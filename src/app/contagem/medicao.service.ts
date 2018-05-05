@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { Medicao } from "./medicao.model";
 import 'rxjs/add/operator/map';
+import { CFPS } from '../login/cfps.model';
 
 @Injectable()
 export class MedicaoService {
@@ -18,6 +19,28 @@ export class MedicaoService {
     consultarTodos() {
         
         let api = this.api;
+
+        console.log(api);
+
+        return this._http.get(api)
+        .map(result => result.json());
+                    
+    }
+
+    consultarCFPS(cfps: CFPS) {
+        
+        let api = this.api + "cfps/" + cfps.id;
+
+        console.log(api);
+
+        return this._http.get(api)
+        .map(result => result.json());
+                    
+    }
+
+    consultarTotalPF(cfps: CFPS) {
+        
+        let api = this.api + "cfps/" + cfps.id + "/total";
 
         console.log(api);
 

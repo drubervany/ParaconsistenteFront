@@ -48,8 +48,6 @@
           <th scope="col">Codigo</th>
           <th scope="col">Projeto</th>
           <th scope="col">Cliente</th>
-          <th scope="col">PF</th>
-          <th scope="col">CFPS</th>
         </tr>
       </thead>
       <tbody>
@@ -57,8 +55,6 @@
           <th scope="row">{{projeto.id}}</th>
           <td>{{projeto.nome}}</td>
           <td>{{projeto.gerente.nome}}</td>
-          <td>{{projeto.pf}}</td>
-          <td>{{projeto.cfps.nome}}</td>
         </tr>
       </tbody>
     </table>
@@ -80,12 +76,12 @@
       <tbody>
         <tr *ngFor="let projeto of projetos">
           <td>
-            <select class="form-control" [(ngModel)]="cfpsSelecionado" name="Selecione CFPS"> 
-              <option *ngFor="let cfps of cfpsAtivos" [ngValue]="cfps">{{cfps.nome}}</option>
+            <select class="form-control" [(ngModel)]="cfpsSelecionado" (ngModelChange)="onChange($event,  projeto)" name="Selecione CFPS"> 
+              <option *ngFor="let cfps of projeto.cfps" [ngValue]="cfps">{{cfps.nome}}</option>
             </select>
           </td>
           <td>=</td>
-          <td>{{projeto.pf}}</td>
+          <td>{{projeto.pontosFuncao}}</td>
           <td>{{projeto.status}}</td>
         </tr>
       </tbody>

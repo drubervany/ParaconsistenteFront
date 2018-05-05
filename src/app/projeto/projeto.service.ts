@@ -16,7 +16,7 @@ export class ProjetoService {
     //private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/`;
     private api = `http://localhost:8080/paraconsistente/api/projetos/`;
 
-    consultarTodos() {
+    consultarTodos(){
         
         let api = this.api;
 
