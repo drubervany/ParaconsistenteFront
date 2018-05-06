@@ -47,7 +47,7 @@
             <input type="text" class="form-control" value="{{projeto.cfps.nome}}" disabled *ngIf="projeto.pontosFuncao!=0">
           </td>
           <td>=</td>
-          <td *ngIf="projeto.cfps">{{projeto.cfps.numeroPontos}}</td>
+          <td *ngIf="projeto.cfps">{{projeto.pontosFuncao}}</td>
           <td *ngIf="!projeto.cfps">0</td>
           <td>{{projeto.status}}</td>
           <td>
