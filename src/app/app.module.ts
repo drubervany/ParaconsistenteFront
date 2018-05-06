@@ -17,6 +17,7 @@ import { ClienteService } from './cliente/cliente.service';
 import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { CadastroContagemComponent } from './contagem/cadastro/cadastro-contagem.component';
+import { ContagemComponent } from './contagem/contagem.component';
 import { ComplexidadeContagemComponent } from './contagem/complexidade/complexidade-contagem.component';
 import { CFPSSelecionarComponent } from './projeto/cfps/selecionar/cfps-selecionar.component';
 import { ClienteSelecionarComponent } from './projeto/cliente/selecionar/cliente-selecionar.component';
@@ -39,7 +40,8 @@ import { ProjetoSelecionarComponent } from './projeto/selecionar/projeto-selecio
     CadastroContagemComponent,
     ComplexidadeContagemComponent,
     FiltroPesquisaComponent,
-    ProjetoSelecionarComponent
+    ProjetoSelecionarComponent,
+    ContagemComponent
   ],
   imports: [
     BrowserModule,
