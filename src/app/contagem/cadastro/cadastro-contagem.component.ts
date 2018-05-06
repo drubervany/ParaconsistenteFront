@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
 import { CFPS } from '../../login/cfps.model';
 import { Projeto } from '../../projeto/projeto.model';
 import { ProjetoService } from '../../projeto/projeto.service';
+import { MedicaoService } from '../medicao.service';
+import { Medicao } from '../medicao.model';
 
 @Component({
   selector: 'app-contagem',
@@ -19,24 +21,23 @@ export class CadastroContagemComponent implements OnInit {
   funcao: Funcao;
   cfps: CFPS;
   funcoes: Funcao[] = Array<Funcao>();
-   
+  tiposFuncoes: Medicao[];
+  tipoFuncao: Medicao;
+
   constructor(public funcaoService: FuncaoService,
               public projetoService: ProjetoService,
+              public medicaoService: MedicaoService,
               public cfpsService: CfpsService) {
 
       this.cfpsService.consultarTodos().subscribe(cfpss => {
         this.cfps = cfpss[0]
         console.log("logado cfps", cfpss, this.cfps);
       });
-      this.projetoService.consultarTodos().subscribe(projetos => {
-        this.projeto = projetos[0]
-        console.log("logado projeto", projetos, this.projeto);
-      });
   }
 
   ngOnInit() {
     this.funcao = new Funcao();
-    this.funcaoService.consultarTodos().subscribe(funcoes => this.funcoes = funcoes);
+    this.funcaoService.consultarTodos().subscribe(funcoes => this.funcoes = funcoes);    
   }
 
   adicionar(){
@@ -70,6 +71,26 @@ export class CadastroContagemComponent implements OnInit {
   carregaProjetos(projetos) {
     this.projetos = projetos;
   }
+
+  projetoSelecionado(projeto){
+    console.log("projetoSelecionado", projeto);
+    this.projeto = projeto;
+
+    this.medicaoService.consultarProjeto(this.projeto).subscribe(medicao => {
+      console.log("medicao", medicao);
+      if (medicao!==null){
+          this.tiposFuncoes = medicao
+      }
+      this.tipoFuncao = new Medicao();
+      this.tiposFuncoes.push(this.tipoFuncao);
+    });    
+  }
+
+  medicao(medicoes){
+    this.tipoFuncao = new Medicao();
+    this.tiposFuncoes = medicoes;
+  }
+
 }
 
 

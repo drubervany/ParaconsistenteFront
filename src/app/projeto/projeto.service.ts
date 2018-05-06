@@ -1,7 +1,7 @@
 import { Injectable  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Projeto } from './projeto.model';
-import { FIltroPesquisa } from './filtro-pesquisa.model';
+import { FIltroPesquisa } from '../filtro-pesquisa/filtro-pesquisa.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 

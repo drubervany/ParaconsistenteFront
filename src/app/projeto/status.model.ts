@@ -10,6 +10,7 @@ export class Projeto {
     status: string;
     gpBackup: Gerente = new Gerente();
     cliente: Cliente = new Cliente();
+    gerente: Gerente = new Gerente();
     cfpss: CFPS[] = Array<CFPS>();
     cfps: CFPS;
     pontosFuncao: number = 0;

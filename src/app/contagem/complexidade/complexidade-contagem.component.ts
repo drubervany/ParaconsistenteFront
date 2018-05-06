@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Funcao } from '../funcao.model';
 import { Medicao } from '../medicao.model';
 import { MedicaoService } from '../medicao.service';
@@ -18,9 +18,10 @@ export class ComplexidadeContagemComponent implements OnInit {
   @Input() funcoes: Funcao[];
   @Input() projeto: Projeto;
   @Input() cfps: CFPS;
+  @Input() tiposFuncoes: Medicao[];
+  @Input() tipoFuncao: Medicao;
 
-  tipoFuncao: Medicao;
-  tiposFuncoes: Medicao[] = new Array<Medicao>();
+  @Output() medicao = new EventEmitter();
 
   tiposFuncao: any = [
     {"codigo": 1, "nome":"ALI", "descricao":"" },
@@ -30,35 +31,12 @@ export class ComplexidadeContagemComponent implements OnInit {
     {"codigo": 5, "nome":"CE", "descricao":"" }
   ];
     
-  constructor(public medicaoService: MedicaoService,
-    public projetoService: ProjetoService,
-    public cfpsService: CfpsService ) {
+  constructor(public medicaoService: MedicaoService) {      
 
-    this.cfpsService.consultarTodos().subscribe(cfpss => {
-        this.cfps = cfpss[0]
-        console.log("logado cfps", cfpss, this.cfps);
-      });
-      this.projetoService.consultarTodos().subscribe(projetos => {
-        this.projeto = projetos[0]
-        console.log("logado projeto", projetos, this.projeto);
-            this.medicaoService.consultarProjeto(this.projeto).subscribe(medicao => {
-                console.log("medicao", medicao);
-                if (medicao!==null){
-                    this.tiposFuncoes = medicao
-                }
-                this.tipoFuncao = new Medicao();
-                    this.tiposFuncoes.push(this.tipoFuncao);
-                });
-      });
-
-    console.log("logado:", this.cfps, this.projeto);
   }
 
   ngOnInit() {
-    
     console.log("2 logado:", this.cfps, this.projeto);
-    
-    
   }
 
   adicionar(){
@@ -74,6 +52,7 @@ export class ComplexidadeContagemComponent implements OnInit {
                         this.medicaoService.consultarLocation(uri).subscribe(tipoFuncao => {
                           console.log("retornou objeto", tipoFuncao);
                           this.tiposFuncoes.push(tipoFuncao);
+                          this.medicao.emit(this.tiposFuncoes);
                           this.ngOnInit();
                         });
                       });
@@ -172,7 +151,7 @@ export class ComplexidadeContagemComponent implements OnInit {
         }]
     }];
 
-    
+    console.log("total funcao", this.tipoFuncao);
     let valor = 0;
     complexidade.forEach(tipoRegistro => {
         if (this.tipoFuncao.qtdeRegistros >= tipoRegistro.inicio  && 

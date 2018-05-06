@@ -2,16 +2,22 @@
 
 <h2 class="form-signin-heading">Tomada de Decisão</h2>
 <div class="form-group row">
-  <div class="col-sm-8">
+  <div class="col">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Projetos</th>
+          <th scope="col" colspan="4" >Projeto</th>
+          <th scope="col" colspan="3" >IA</th>
+          <th scope="col" colspan="3" >Gerente</th>
         <tr>
         <tr>
           <th scope="col">Codigo</th>
           <th scope="col">Projeto</th>
           <th scope="col">Cliente</th>
+          <th scope="col">Gerente</th>
+          <th scope="col">CFPS</th>
+          <th scope="col">=</th>
+          <th scope="col">PF</th>
           <th scope="col">CFPS</th>
           <th scope="col">=</th>
           <th scope="col">PF</th>
@@ -23,21 +29,32 @@
         <tr *ngFor="let projeto of projetos">
           <th scope="row">{{projeto.id}}</th>
           <td>{{projeto.nome}}</td>
+          <td>{{projeto.cliente.nome}}</td>
           <td>{{projeto.gerente.nome}}</td>
+          <td *ngIf="projeto.cfpsIA">
+            <input type="text" class="form-control" value="{{projeto.cfpsIA.nome}}" disabled>
+          </td>
+          <td *ngIf="!projeto.cfpsIA">
+              <input type="text" class="form-control" disabled>
+            </td>
+          <td>=</td>
+          <td *ngIf="projeto.cfpsIA">{{projeto.cfpsIA.numeroPontos}}</td>
+          <td *ngIf="!projeto.cfpsIA">0</td>
           <td>
-            <select class="form-control" [(ngModel)]="cfpsSelecionado" name="Selecione CFPS" *ngIf="!projeto.cfps"> 
+            <select class="form-control" [(ngModel)]="projeto.cfps" name="Selecione CFPS" *ngIf="projeto.pontosFuncao==0">
               <option *ngFor="let cfps of projeto.cfpss" [ngValue]="cfps">{{cfps.nome}}</option>
             </select>
-            <input type="text" class="form-control" value="{{projeto.cfps.nome}}" disabled *ngIf="projeto.cfps">
+            <input type="text" class="form-control" value="{{projeto.cfps.nome}}" disabled *ngIf="projeto.pontosFuncao!=0">
           </td>
           <td>=</td>
-          <td>{{projeto.pontosFuncao}}</td>
+          <td *ngIf="projeto.cfps">{{projeto.cfps.numeroPontos}}</td>
+          <td *ngIf="!projeto.cfps">0</td>
           <td>{{projeto.status}}</td>
           <td>
-            <button type="button" class="btn btn-success" (click)="atualizar(cfpsSelecionado, projeto);" *ngIf="!projeto.cfps">
+            <button type="button" class="btn btn-success" (click)="atualizar(projeto);" *ngIf="projeto.pontosFuncao==0">
               <span class="ion-plus-round"></span>
             </button>
-            <button type="button" class="btn btn-danger" (click)="deletear(projeto)" *ngIf="projeto.cfps">
+            <button type="button" class="btn btn-danger" (click)="deletear(projeto)" *ngIf="projeto.pontosFuncao!=0">
               <span class="ion-close-round Deletar"></span>
             </button>
           </td>

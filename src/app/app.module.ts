@@ -25,6 +25,7 @@ import { GerenteSelecionarComponent } from './projeto/gerente/selecionar/gerente
 import { MedicaoService } from './contagem/medicao.service';
 import { FuncaoService } from './contagem/funcao.service';
 import { FiltroPesquisaComponent } from './filtro-pesquisa/filtro-pesquisa.component';
+import { ProjetoSelecionarComponent } from './projeto/selecionar/projeto-selecionar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FiltroPesquisaComponent } from './filtro-pesquisa/filtro-pesquisa.compo
     LoginComponent,
     CadastroContagemComponent,
     ComplexidadeContagemComponent,
-    FiltroPesquisaComponent
+    FiltroPesquisaComponent,
+    ProjetoSelecionarComponent
   ],
   imports: [
     BrowserModule,

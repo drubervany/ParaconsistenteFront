@@ -51,9 +51,9 @@ export class MedicaoService {
                     
     }
 
-    consultarTotalPF(cfps: CFPS, projeto: Projeto) {
+    consultarTotalPF(projeto: Projeto) {
         
-        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + cfps.id + "/medicoes/total";
+        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + projeto.cfps.id + "/medicoes/total";
         console.log(api);
 
         return this._http.get(api)
@@ -101,7 +101,7 @@ export class MedicaoService {
 
     deletar(medicao: Medicao) {
         
-        let api = this.api + medicao.id;
+        let api = this.api + "/" + medicao.id;
         console.log(api, medicao);
 
         return this._http.delete(api)

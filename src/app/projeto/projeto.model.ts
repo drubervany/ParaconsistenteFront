@@ -12,6 +12,7 @@ export class Projeto {
     cliente: Cliente = new Cliente();
     cfpss: CFPS[] = Array<CFPS>();
     cfps: CFPS;
+    cfpsIA: CFPS;
     pontosFuncao: number = 0;
 
 }

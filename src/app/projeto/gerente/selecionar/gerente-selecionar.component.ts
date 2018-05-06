@@ -15,14 +15,12 @@ export class GerenteSelecionarComponent implements OnInit {
   @Input() projeto: Projeto;
 
   gerentesAtivos: Gerente[] = new Array<Gerente>();
-  gerenteSelecionado: Gerente;
 
   constructor(private gerenteService: GerenteService) { 
   }
 
   ngOnInit() {
-    console.log("this.projeto.gpBackup", this.projeto)
-    this.gerenteSelecionado = this.projeto.gpBackup;
+    console.log("this.projeto.gerente", this.projeto)
     this.gerenteService.consultarTodos()
                        .subscribe(gerentes => this.gerentesAtivos = gerentes);
   }

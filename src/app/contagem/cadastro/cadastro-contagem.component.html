@@ -1,5 +1,7 @@
 <filtro-pesquisa (pesquisaProjetos)='carregaProjetos($event)'></filtro-pesquisa>
 
+<projeto-selecionar [projetos]="projetos" (projetoSelecionado)="projetoSelecionado($event)"></projeto-selecionar>
+
 <h2 class="form-signin-heading">Cadastro Função</h2>
 <div class="form-group row">
   <label class="col-sm-2 col-form-label">Nome:</label>
@@ -38,4 +40,11 @@
   </div>
 </div>
 
-<complexidade-contagem [funcoes]="funcoes" [cfps]="cfps" [projeto]="projeto"></complexidade-contagem>
+<complexidade-contagem 
+    [funcoes]="funcoes" 
+    [cfps]="cfps" 
+    [projeto]="projeto" 
+    [tiposFuncoes]="tiposFuncoes" 
+    [tipoFuncao]="tipoFuncao"
+    (medicao)="medicao($event)">
+</complexidade-contagem>
