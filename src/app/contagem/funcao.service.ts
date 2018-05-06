@@ -10,7 +10,7 @@ export class FuncaoService {
 
     errorMessage: String;
 
-    private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/funcoes`;
+    private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/funcoes/`;
     //private api = `http://localhost:8080/paraconsistente/api/funcoes/`;
 
     constructor(private _http: Http) { }
