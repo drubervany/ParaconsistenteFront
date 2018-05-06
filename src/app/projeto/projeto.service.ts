@@ -1,6 +1,7 @@
 import { Injectable  } from '@angular/core';
 import { Router } from '@angular/router';
-import { Projeto } from './projeto';
+import { Projeto } from './projeto.model';
+import { FIltroPesquisa } from '../filtro-pesquisa/filtro-pesquisa.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -13,12 +14,39 @@ export class ProjetoService {
     constructor(private router: Router,
         private _http: Http) {}
         
-    private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/`;
-    //private api = `http://localhost:8080/paraconsistente/api/projetos/`;
+    //private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/`;
+    private api = `http://localhost:8080/paraconsistente/api/projetos/`;
 
-    consultarTodos() {
+    consultarTodos(){
         
         let api = this.api;
+
+        console.log(api);
+
+        return this._http.get(api)
+        .map(result => result.json());
+                    
+    }
+
+    consultarPesquisa(pesquisa: FIltroPesquisa){
+        console.log("pesquisa", pesquisa);
+
+        let api = this.api;
+        if(pesquisa.status !== null){
+            console.log("pesquisa status", pesquisa.status);
+            api += "status/" + pesquisa.status.descricao;
+        }else{
+            console.log("pesquisa projeto", pesquisa.projeto);
+            api += pesquisa.projeto.id;            
+        }
+
+        return this._http.get(api)
+            .map(result => result.json());
+    }
+
+    consultarStatus(){
+        
+        let api = this.api + "status";
 
         console.log(api);
 
@@ -38,7 +66,7 @@ export class ProjetoService {
                     
     }
 
-    salvar(projeto: any) {
+    salvar(projeto: Projeto) {
     
         console.log(this.api);
 
@@ -46,20 +74,19 @@ export class ProjetoService {
                     
     }
 
-    atualizar(projeto: any) {
-      
-        let api = this.api + projeto.codigo;
+    atualizar(projeto: Projeto) {
+        let api = this.api + projeto.id;
 
-        console.log(api);
+        console.log("atualizado", api, projeto);
 
-        return this._http.put(api, JSON.stringify(projeto))
+        return this._http.put(api, projeto)
         .map(result => result.json());
                     
     }
 
-    deletar(projeto: any) {
+    deletar(projeto: Projeto) {
         
-        let api = this.api + projeto.codigo;
+        let api = this.api + projeto.id;
 
         console.log(api);
 

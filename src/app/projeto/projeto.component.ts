@@ -1,13 +1,10 @@
-import { CFPS } from './../login/cfps';
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileDropModule, UploadFile, UploadEvent } from 'ngx-file-drop/lib/ngx-drop';
 import { ProjetoService } from './projeto.service';
 import { ClienteService } from '../cliente/cliente.service';
-import { CfpsService } from '../cfps/cfps.service';
-import * as swal from 'sweetalert2';
-import { Projeto } from './projeto';
+import { Projeto } from './projeto.model';
 
 @Component({
   selector: 'app-projeto',
@@ -20,14 +17,10 @@ export class ProjetoComponent implements OnInit {
 
   cnpjPesquisa: String;
   projetoSelecionado: Projeto;
-  cfpsSelecionado: CFPS;
-
-  cfpsAtivos: CFPS[] = new Array<CFPS>();
   projetosAtivos: Projeto[] = new Array<Projeto>();
 
   constructor(private service: ProjetoService,
-              private clienteService: ClienteService,
-              private cfpsService: CfpsService,
+              private clienteService: ClienteService
               ) { 
     
   }
@@ -35,7 +28,6 @@ export class ProjetoComponent implements OnInit {
   ngOnInit() {
   
      this.novo();
-     this.cfpsService.consultarTodos().subscribe(cfps => this.cfpsAtivos = cfps);
      this.service.consultarTodos().subscribe(projetos => this.projetosAtivos = projetos);
   }
 
@@ -59,7 +51,8 @@ export class ProjetoComponent implements OnInit {
   }
 
   novo(){
-     this.projeto = new Projeto();     
+     this.projeto = new Projeto();  
+     this.projeto.status = 'CADASTRADO';
   }
 
   pesquisar(){
@@ -72,39 +65,18 @@ export class ProjetoComponent implements OnInit {
   }
 
   salvar(){
-    console.log(JSON.stringify(this.projeto));
-    
-
-    /* this.service.salvar(this.projeto)
+    this.service.salvar(this.projeto)
                 .subscribe(projeto => {
-                  //this.projeto = projeto;
-
-                  
-
-                }); */
+                  this.ngOnInit();
+                });
+    
   }
 
   deletar(){
-    this.service.deletar(this.projeto);
-  }
-
-  pesquisarCliente(){
-   
-    this.clienteService.consultar(this.cnpjPesquisa)
-                       .subscribe(cliente => this.projeto.cliente = cliente);
-    
-  }
-
-  adicionarCFPS(){
-    console.log(this.cfpsSelecionado);
-    this.projeto.cfps.push(this.cfpsSelecionado);
-  }
-
-  deletarCFPS(cfps){
-    let index: number = this.projeto.cfps.indexOf(cfps);
-    if (index !== -1) {
-        this.projeto.cfps.splice(index, 1);
-    }
+    this.service.deletar(this.projeto)
+                .subscribe(projeto => {
+                  this.ngOnInit();
+                });
   }
 
   uploadFile(event) {

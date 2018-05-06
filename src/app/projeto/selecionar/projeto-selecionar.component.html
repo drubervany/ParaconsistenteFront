@@ -1,0 +1,34 @@
+<h2 class="form-signin-heading">Selecionar Projeto</h2>
+<div class="form-group row">
+  <div class="col-sm-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Projetos</th>
+        <tr>
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">Projeto</th>
+          <th scope="col">Gerente</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projeto of projetos">
+          <th scope="row">{{projeto.id}}</th>
+          <td>{{projeto.nome}}</td>
+          <td>{{projeto.gerente.nome}}</td>
+          <td>{{projeto.cliente.nome}}</td>
+          <td>{{projeto.status}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="selecionar(projeto);">
+              <span class="ion-plus-round"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

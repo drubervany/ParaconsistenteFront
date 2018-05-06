@@ -1,0 +1,9 @@
+  <h2 class="form-signin-heading">Gerentes Backup</h2>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Gerente</label>
+    <div class="col col-md-6">
+      <select class="form-control" [(ngModel)]="projeto.gerente" name="Selecione CFPS"> 
+        <option *ngFor="let gerente of gerentesAtivos" [ngValue]="gerente">{{gerente.nome}}</option>
+      </select>
+    </div>
+  </div>

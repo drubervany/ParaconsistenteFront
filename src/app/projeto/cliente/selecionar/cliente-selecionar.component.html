@@ -1,0 +1,18 @@
+  <h2 class="form-signin-heading">Cliente</h2>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">CNPJ:</label>
+    <div class="col col-md-6">
+      <input [(ngModel)]="cnpjPesquisa" type="text" name="inputEmail" class="form-control" placeholder="Cnpj do Cliente" required autofocus>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-secondary" type="button" (click)="pesquisar()">
+        <span class="ion-search"></span>
+      </button>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Cliente:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" value="{{projeto.cliente.nome}}" disabled>
+    </div>
+  </div>

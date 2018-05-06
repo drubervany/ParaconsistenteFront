@@ -15,16 +15,31 @@ import { ProjetoComponent } from './projeto/projeto.component';
 import { ProjetoService } from './projeto/projeto.service';
 import { ClienteService } from './cliente/cliente.service';
 import { TomadaDecisaoComponent } from './tomada-decisao/tomada-decisao.component';
-import { ContagemComponent } from './contagem/contagem.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { CadastroContagemComponent } from './contagem/cadastro/cadastro-contagem.component';
+import { ComplexidadeContagemComponent } from './contagem/complexidade/complexidade-contagem.component';
+import { CFPSSelecionarComponent } from './projeto/cfps/selecionar/cfps-selecionar.component';
+import { ClienteSelecionarComponent } from './projeto/cliente/selecionar/cliente-selecionar.component';
+import { GerenteService } from './gerente/gerente.service';
+import { GerenteSelecionarComponent } from './projeto/gerente/selecionar/gerente-selecionar.component';
+import { MedicaoService } from './contagem/medicao.service';
+import { FuncaoService } from './contagem/funcao.service';
+import { FiltroPesquisaComponent } from './filtro-pesquisa/filtro-pesquisa.component';
+import { ProjetoSelecionarComponent } from './projeto/selecionar/projeto-selecionar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjetoComponent,
+    CFPSSelecionarComponent,
+    ClienteSelecionarComponent,
+    GerenteSelecionarComponent,
     TomadaDecisaoComponent,
     LoginComponent,
-    ContagemComponent
+    CadastroContagemComponent,
+    ComplexidadeContagemComponent,
+    FiltroPesquisaComponent,
+    ProjetoSelecionarComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +58,10 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
               AuthGuard, 
               ProjetoService, 
               ClienteService,
-              CfpsService],
+              CfpsService,
+              GerenteService,
+              MedicaoService,
+              FuncaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

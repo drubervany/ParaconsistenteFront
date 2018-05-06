@@ -1,0 +1,50 @@
+<filtro-pesquisa (pesquisaProjetos)='carregaProjetos($event)'></filtro-pesquisa>
+
+<projeto-selecionar [projetos]="projetos" (projetoSelecionado)="projetoSelecionado($event)"></projeto-selecionar>
+
+<h2 class="form-signin-heading">Cadastro Função</h2>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Nome:</label>
+  <div class="col-sm-6">
+    <input [(ngModel)]="funcao.nome" type="text" name="status" class="form-control" placeholder="Nome da função">
+  </div>
+  <div class="col-2">
+    <button type="button" class="btn btn-success" (click)="adicionar()">
+      <span class="ion-plus-round"></span>
+    </button>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Funçoes Criadas:</label>
+  <div class="col-sm-8">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let funcao of funcoes; let idx = index;">
+          <th scope="row">{{funcao.id}}</th>
+          <td>{{funcao.nome}}</td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="deletar(funcao)">
+              <span class="ion-close-round Deletar"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<complexidade-contagem 
+    [funcoes]="funcoes" 
+    [cfps]="cfps" 
+    [projeto]="projeto" 
+    [tiposFuncoes]="tiposFuncoes" 
+    [tipoFuncao]="tipoFuncao"
+    (medicao)="medicao($event)">
+</complexidade-contagem>

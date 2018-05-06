@@ -1,4 +1,4 @@
 export class Gerente {
     id: String;
-    descricao: String;
+    nome: String;
 }

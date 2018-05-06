@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter  } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from './usuario';
+import { Usuario } from './usuario.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -18,8 +18,8 @@ export class AuthService {
 
     fazerLogin(usuario: Usuario) {
 
-        let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/usuarios/${usuario.email}/${usuario.password}`;
-        //let api = `http://localhost:8080/paraconsistente/api/usuarios/${usuario.email}/${usuario.password}`;
+        //let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/usuarios/${usuario.email}/${usuario.password}`;
+        let api = `http://localhost:8080/paraconsistente/api/usuarios/${usuario.email}/${usuario.password}`;
 
         console.log(api);
 
