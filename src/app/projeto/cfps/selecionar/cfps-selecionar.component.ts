@@ -27,13 +27,13 @@ export class CFPSSelecionarComponent implements OnInit {
   }
   
   selecionar(){
-    this.projeto.cfps.push(this.cfpsSelecionado);
+    this.projeto.cfpss.push(this.cfpsSelecionado);
   }
 
   deletar(cfps){
-    let index: number = this.projeto.cfps.indexOf(cfps);
+    let index: number = this.projeto.cfpss.indexOf(cfps);
     if (index !== -1) {
-        this.projeto.cfps.splice(index, 1);
+        this.projeto.cfpss.splice(index, 1);
     }
   }
 }

@@ -24,6 +24,7 @@ import { GerenteService } from './gerente/gerente.service';
 import { GerenteSelecionarComponent } from './projeto/gerente/selecionar/gerente-selecionar.component';
 import { MedicaoService } from './contagem/medicao.service';
 import { FuncaoService } from './contagem/funcao.service';
+import { FiltroPesquisaComponent } from './filtro-pesquisa/filtro-pesquisa.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FuncaoService } from './contagem/funcao.service';
     TomadaDecisaoComponent,
     LoginComponent,
     CadastroContagemComponent,
-    ComplexidadeContagemComponent
+    ComplexidadeContagemComponent,
+    FiltroPesquisaComponent
   ],
   imports: [
     BrowserModule,

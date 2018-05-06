@@ -1,42 +1,6 @@
+<filtro-pesquisa (pesquisaProjetos)='carregaProjetos($event)'></filtro-pesquisa>
+
 <h2 class="form-signin-heading">Tomada de Decisão</h2>
-<div class="form-group row">
-  <label class="col-sm-2 col-form-label">Status</label>
-  <div class="col-sm-4">
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Em Cadastro</option>
-      <option>Staus 2</option>
-      <option>Staus 3</option>
-      <option>Staus 4</option>
-      <option>Staus 5</option>
-    </select>
-  </div>
-
-  <label class="col-sm-2 col-form-label">Cod. Projeto:</label>
-  <div class="col-sm-2">
-      <select class="form-control">
-        <option>Todos</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
-    </div>
-</div>
-
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label">Data inicio:</label>
-    <div class="col-sm-6">
-      <input type="text" name="nome" class="form-control" placeholder="Data inicio" required autofocus>
-    </div>
-  </div>
-
-<div class="form-group row">
-    <label class="col-sm-2 col-form-label">Data fim:</label>
-    <div class="col-sm-6">
-      <input type="text" name="nome" class="form-control" placeholder="Data fim" required autofocus>
-    </div>
-  </div>
-<hr />
-
 <div class="form-group row">
   <div class="col-sm-8">
     <table class="table">
@@ -48,6 +12,11 @@
           <th scope="col">Codigo</th>
           <th scope="col">Projeto</th>
           <th scope="col">Cliente</th>
+          <th scope="col">CFPS</th>
+          <th scope="col">=</th>
+          <th scope="col">PF</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -55,34 +24,23 @@
           <th scope="row">{{projeto.id}}</th>
           <td>{{projeto.nome}}</td>
           <td>{{projeto.gerente.nome}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="col-sm-4">
-    <table class="table">
-      <thead>
-        <tr>
-          <th colspan="3" align="center" >GP</th>
-        </tr>  
-        <tr>
-          <th scope="col">CFPS</th>
-          <th scope="col">=</th>
-          <th scope="col">PF</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let projeto of projetos">
           <td>
-            <select class="form-control" [(ngModel)]="cfpsSelecionado" (ngModelChange)="onChange($event,  projeto)" name="Selecione CFPS"> 
-              <option *ngFor="let cfps of projeto.cfps" [ngValue]="cfps">{{cfps.nome}}</option>
+            <select class="form-control" [(ngModel)]="cfpsSelecionado" name="Selecione CFPS" *ngIf="!projeto.cfps"> 
+              <option *ngFor="let cfps of projeto.cfpss" [ngValue]="cfps">{{cfps.nome}}</option>
             </select>
+            <input type="text" class="form-control" value="{{projeto.cfps.nome}}" disabled *ngIf="projeto.cfps">
           </td>
           <td>=</td>
           <td>{{projeto.pontosFuncao}}</td>
           <td>{{projeto.status}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="atualizar(cfpsSelecionado, projeto);" *ngIf="!projeto.cfps">
+              <span class="ion-plus-round"></span>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="deletear(projeto)" *ngIf="projeto.cfps">
+              <span class="ion-close-round Deletar"></span>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

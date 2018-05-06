@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { Medicao } from "./medicao.model";
 import 'rxjs/add/operator/map';
 import { CFPS } from '../login/cfps.model';
+import { Projeto } from '../projeto/projeto.model';
 
 @Injectable()
 export class MedicaoService {
@@ -11,7 +12,7 @@ export class MedicaoService {
     errorMessage: String;
 
     //private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/contagem`;
-    private api = `http://localhost:8080/paraconsistente/api/medicoes/`;
+    private api = `http://localhost:8080/paraconsistente/api/medicoes`;
 
     constructor(private _http: Http) { }
 
@@ -27,9 +28,10 @@ export class MedicaoService {
                     
     }
 
-    consultarCFPS(cfps: CFPS) {
+    consultarProjeto(projeto: Projeto) {
         
-        let api = this.api + "cfps/" + cfps.id;
+        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/medicoes";
+
 
         console.log(api);
 
@@ -38,10 +40,20 @@ export class MedicaoService {
                     
     }
 
-    consultarTotalPF(cfps: CFPS) {
+    consultarCFPS(cfps: CFPS) {
         
-        let api = this.api + "cfps/" + cfps.id + "/total";
+        let api = this.api + "projetos/cfps/" + cfps.id;
 
+        console.log(api);
+
+        return this._http.get(api)
+        .map(result => result.json());
+                    
+    }
+
+    consultarTotalPF(cfps: CFPS, projeto: Projeto) {
+        
+        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + cfps.id + "/medicoes/total";
         console.log(api);
 
         return this._http.get(api)

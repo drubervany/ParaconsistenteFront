@@ -4,6 +4,9 @@ import { Medicao } from '../medicao.model';
 import { MedicaoService } from '../medicao.service';
 import { NgTemplateOutlet } from '@angular/common';
 import { CFPS } from '../../login/cfps.model';
+import { Projeto } from '../../projeto/projeto.model';
+import { CfpsService } from '../../cfps/cfps.service';
+import { ProjetoService } from '../../projeto/projeto.service';
 
 @Component({
   selector: 'complexidade-contagem',
@@ -13,6 +16,7 @@ import { CFPS } from '../../login/cfps.model';
 export class ComplexidadeContagemComponent implements OnInit {
 
   @Input() funcoes: Funcao[];
+  @Input() projeto: Projeto;
   @Input() cfps: CFPS;
 
   tipoFuncao: Medicao;
@@ -26,28 +30,42 @@ export class ComplexidadeContagemComponent implements OnInit {
     {"codigo": 5, "nome":"CE", "descricao":"" }
   ];
     
-  constructor(public medicaoService: MedicaoService ) {
-    console.log("cfps logado:", this.cfps);
+  constructor(public medicaoService: MedicaoService,
+    public projetoService: ProjetoService,
+    public cfpsService: CfpsService ) {
+
+    this.cfpsService.consultarTodos().subscribe(cfpss => {
+        this.cfps = cfpss[0]
+        console.log("logado cfps", cfpss, this.cfps);
+      });
+      this.projetoService.consultarTodos().subscribe(projetos => {
+        this.projeto = projetos[0]
+        console.log("logado projeto", projetos, this.projeto);
+            this.medicaoService.consultarProjeto(this.projeto).subscribe(medicao => {
+                console.log("medicao", medicao);
+                if (medicao!==null){
+                    this.tiposFuncoes = medicao
+                }
+                this.tipoFuncao = new Medicao();
+                    this.tiposFuncoes.push(this.tipoFuncao);
+                });
+      });
+
+    console.log("logado:", this.cfps, this.projeto);
   }
 
   ngOnInit() {
     
-    console.log("cfps logado:", this.cfps);
+    console.log("2 logado:", this.cfps, this.projeto);
     
-    this.medicaoService.consultarTodos().subscribe(medicao => {
-      console.log("medicao", medicao);
-      if (medicao!==null){
-        this.tiposFuncoes = medicao
-      }
-      this.tipoFuncao = new Medicao();
-       this.tiposFuncoes.push(this.tipoFuncao);
-    });
+    
   }
 
   adicionar(){
     this.tipoFuncao.totalPonfoFuncao = this.totalPonfoFuncao;
     console.log("tipoFuncao", this.tipoFuncao);
     this.tipoFuncao.cfps = this.cfps;
+    this.tipoFuncao.projeto = this.projeto;
     this.medicaoService.salvar(this.tipoFuncao)
                       .subscribe(tipoFuncao => {
                         console.log("tipoFuncao", tipoFuncao)

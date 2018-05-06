@@ -1,6 +1,7 @@
 import { Injectable  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Projeto } from './projeto.model';
+import { FIltroPesquisa } from './filtro-pesquisa.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -19,6 +20,33 @@ export class ProjetoService {
     consultarTodos(){
         
         let api = this.api;
+
+        console.log(api);
+
+        return this._http.get(api)
+        .map(result => result.json());
+                    
+    }
+
+    consultarPesquisa(pesquisa: FIltroPesquisa){
+        console.log("pesquisa", pesquisa);
+
+        let api = this.api;
+        if(pesquisa.status !== null){
+            console.log("pesquisa status", pesquisa.status);
+            api += "status/" + pesquisa.status.descricao;
+        }else{
+            console.log("pesquisa projeto", pesquisa.projeto);
+            api += pesquisa.projeto.id;            
+        }
+
+        return this._http.get(api)
+            .map(result => result.json());
+    }
+
+    consultarStatus(){
+        
+        let api = this.api + "status";
 
         console.log(api);
 
@@ -49,7 +77,7 @@ export class ProjetoService {
     atualizar(projeto: Projeto) {
         let api = this.api + projeto.id;
 
-        console.log(api);
+        console.log("atualizado", api, projeto);
 
         return this._http.put(api, projeto)
         .map(result => result.json());

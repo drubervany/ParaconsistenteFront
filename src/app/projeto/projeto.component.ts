@@ -51,7 +51,8 @@ export class ProjetoComponent implements OnInit {
   }
 
   novo(){
-     this.projeto = new Projeto();     
+     this.projeto = new Projeto();  
+     this.projeto.status = 'CADASTRADO';
   }
 
   pesquisar(){

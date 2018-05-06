@@ -4,6 +4,8 @@ import { FuncaoService } from '../funcao.service';
 import { CfpsService } from '../../cfps/cfps.service';
 import { Location } from '@angular/common';
 import { CFPS } from '../../login/cfps.model';
+import { Projeto } from '../../projeto/projeto.model';
+import { ProjetoService } from '../../projeto/projeto.service';
 
 @Component({
   selector: 'app-contagem',
@@ -11,21 +13,30 @@ import { CFPS } from '../../login/cfps.model';
   styleUrls: ['./cadastro-contagem.component.css']
 })
 export class CadastroContagemComponent implements OnInit {
-
+  
+  projetos: Projeto[];
+  projeto: Projeto;
   funcao: Funcao;
   cfps: CFPS;
   funcoes: Funcao[] = Array<Funcao>();
    
   constructor(public funcaoService: FuncaoService,
-              public cfpsService: CfpsService) { }
+              public projetoService: ProjetoService,
+              public cfpsService: CfpsService) {
+
+      this.cfpsService.consultarTodos().subscribe(cfpss => {
+        this.cfps = cfpss[0]
+        console.log("logado cfps", cfpss, this.cfps);
+      });
+      this.projetoService.consultarTodos().subscribe(projetos => {
+        this.projeto = projetos[0]
+        console.log("logado projeto", projetos, this.projeto);
+      });
+  }
 
   ngOnInit() {
     this.funcao = new Funcao();
     this.funcaoService.consultarTodos().subscribe(funcoes => this.funcoes = funcoes);
-    this.cfpsService.consultarTodos().subscribe(cfpss => {
-      this.cfps = cfpss[0]
-      console.log("logado cfps", cfpss, this.cfps);
-    });
   }
 
   adicionar(){
@@ -54,6 +65,10 @@ export class CadastroContagemComponent implements OnInit {
                       .subscribe(projeto => projeto);
        
     }
+  }
+
+  carregaProjetos(projetos) {
+    this.projetos = projetos;
   }
 }
 

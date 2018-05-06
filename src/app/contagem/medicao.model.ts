@@ -1,5 +1,6 @@
 import { Funcao } from "./funcao.model";
 import { CFPS } from "../login/cfps.model";
+import { Projeto } from "../projeto/projeto.model";
 
 export class Medicao {
     id: String;
@@ -9,4 +10,5 @@ export class Medicao {
     qtdeRegistros: number = 0;
     totalPonfoFuncao: number = 0;
     cfps: CFPS;
+    projeto: Projeto;
 }

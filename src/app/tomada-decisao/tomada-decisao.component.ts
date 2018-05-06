@@ -12,28 +12,41 @@ import { Projeto } from '../projeto/projeto.model';
 })
 export class TomadaDecisaoComponent implements OnInit {
 
-  projetos: Projeto[];
   cfpsSelecionado: CFPS;
- 
+
+  projetos: Projeto[];
+  cfpss: CFPS[];
+  cfps: CFPS;
+  status: any;
+
+  todosProjetos: Projeto[] = Array<Projeto>();
   
   constructor(private projetoService: ProjetoService,
               private medicaoService: MedicaoService) { }
 
   ngOnInit() {
-
-    this.projetoService.consultarTodos().subscribe(projetos => {
-      console.log("projetos", projetos);
-      this.projetos = projetos});     
+    this.projetos = new Array<Projeto>();
   }
 
-  onChange(cfps: CFPS, projeto: Projeto) {
-    console.log("onChange", cfps, projeto);
-    this.medicaoService.consultarTotalPF(cfps).subscribe(medicaoCFPS => {
-      console.log("medicaoCFPS", medicaoCFPS);
-      this.cfpsSelecionado = medicaoCFPS;
-      projeto.pontosFuncao = this.cfpsSelecionado.numeroPontos;
-      projeto.cfpsSelecionado = this.cfpsSelecionado;
+  atualizar(cfps: CFPS, projeto: Projeto) {
+    this.medicaoService.consultarTotalPF(cfps, projeto).subscribe(medicaoCFPS => {
+      this.cfps = medicaoCFPS;
+      console.log("cfps", this.cfps);
+      projeto.pontosFuncao = this.cfps.numeroPontos;
+      projeto.cfps = this.cfps;
       projeto.status = "APROVADO";
+      this.projetoService.atualizar(projeto).subscribe(projetos => projetos);
     });
+  }
+
+  deletear(projeto: Projeto){
+      projeto.pontosFuncao = 0;
+      projeto.cfps = null;
+      projeto.status = "CADASTRADO";
+      this.projetoService.atualizar(projeto).subscribe(projetos => projetos);
+  }
+
+  carregaProjetos(projetos) {
+    this.projetos = projetos;
   }
 }
