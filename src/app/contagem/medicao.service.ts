@@ -11,8 +11,8 @@ export class MedicaoService {
 
     errorMessage: String;
 
-    //private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/contagem`;
-    private api = `http://localhost:8080/paraconsistente/api/medicoes`;
+    private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/medicoes`;
+    //private api = `http://localhost:8080/paraconsistente/api/medicoes`;
 
     constructor(private _http: Http) { }
 
@@ -30,7 +30,8 @@ export class MedicaoService {
 
     consultarProjeto(projeto: Projeto) {
         
-        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/medicoes";
+        let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/` + projeto.id + "/medicoes";
+        //let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/medicoes";
 
 
         console.log(api);
@@ -53,7 +54,8 @@ export class MedicaoService {
 
     consultarTotalPF(projeto: Projeto) {
         
-        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + projeto.cfps.id + "/medicoes/total";
+        let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + projeto.cfps.id + "/medicoes/total";
+        //let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + projeto.cfps.id + "/medicoes/total";
         console.log(api);
 
         return this._http.get(api)

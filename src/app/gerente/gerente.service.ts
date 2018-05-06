@@ -12,8 +12,8 @@ export class GerenteService {
 
     consultarTodos() {
 
-        //let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/clientes/cnpj/${cnpj}`;
-        let api = `http://localhost:8080/paraconsistente/api/gerentes/`;
+        let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/gerentes/`;
+        //let api = `http://localhost:8080/paraconsistente/api/gerentes/`;
 
         console.log("GerenteService", api);
 
