@@ -37,10 +37,11 @@ export class CadastroContagemComponent implements OnInit {
 
   ngOnInit() {
     this.funcao = new Funcao();
-    this.funcaoService.consultarTodos().subscribe(funcoes => this.funcoes = funcoes);    
   }
 
   adicionar(){
+    this.funcao.projeto = this.projeto;
+    this.funcao.cfps= this.cfps;
     console.log(this.funcao);
     this.funcaoService.salvar(this.funcao)
                       .subscribe(funcao => {
@@ -49,6 +50,7 @@ export class CadastroContagemComponent implements OnInit {
                         console.log("uri", uri);
                         this.funcaoService.consultarLocation(uri).subscribe(funcao => {
                           console.log("retornou objeto", funcao);
+                          this.funcao = funcao;
                           this.funcoes.push(this.funcao);
                           this.ngOnInit();
                         });
@@ -83,12 +85,15 @@ export class CadastroContagemComponent implements OnInit {
       }
       this.tipoFuncao = new Medicao();
       this.tiposFuncoes.push(this.tipoFuncao);
+      
     });    
+
+    this.funcaoService.consultarTodos(projeto, this.cfps).subscribe(funcoes => this.funcoes = funcoes);    
   }
 
   medicao(medicoes){
-    this.tipoFuncao = new Medicao();
     this.tiposFuncoes = medicoes;
+    this.projetoSelecionado(this.projeto);
   }
 
 }
