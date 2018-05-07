@@ -23,10 +23,17 @@ Sempre que for alterar baixar o codigo:
 
 Após alterações de codigo seguir os camandos git
 
-`git status .` verifica a area de commit
-`git add .` adicionar todos arquivos
-`git commit -m"comentario aqui dentro"` salva para a area de transferencia com comentario
-`git push` envia ao servidor
+`git status .` 
+verifica a area de commit
+
+`git add .`
+adicionar todos arquivos
+
+`git commit -m"comentario aqui dentro"` 
+salva para a area de transferencia com comentario
+
+`git push` 
+envia ao servidor
 
 ## Development server
 
