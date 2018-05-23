@@ -14,8 +14,8 @@ export class ProjetoService {
     constructor(private router: Router,
         private _http: Http) {}
         
-    private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/`;
-    //private api = `http://localhost:8080/paraconsistente/api/projetos/`;
+    //private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/`;
+    private api = `http://localhost:8080/paraconsistente/api/projetos/`;
 
     consultarTodos(){
         

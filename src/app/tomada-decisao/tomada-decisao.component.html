@@ -51,12 +51,19 @@
           <td *ngIf="!projeto.cfps">0</td>
           <td>{{projeto.status}}</td>
           <td>
-            <button type="button" class="btn btn-success" (click)="atualizar(projeto);" *ngIf="projeto.pontosFuncao==0">
-              <span class="ion-plus-round"></span>
-            </button>
-            <button type="button" class="btn btn-danger" (click)="deletear(projeto)" *ngIf="projeto.pontosFuncao!=0">
-              <span class="ion-close-round Deletar"></span>
-            </button>
+            <div class="row">
+              <div class="col">
+                <button type="button" class="btn btn-success" (click)="atualizar(projeto);" *ngIf="projeto.pontosFuncao==0">
+                  <span class="ion-plus-round"></span>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deletar(projeto)" *ngIf="projeto.pontosFuncao!=0">
+                  <span class="ion-close-round Deletar"></span>
+                </button>
+                <button type="button" class="btn btn-primary" (click)="calularIA(projeto);">
+                  IA
+                </button>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>

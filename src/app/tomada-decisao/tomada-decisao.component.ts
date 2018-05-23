@@ -39,11 +39,15 @@ export class TomadaDecisaoComponent implements OnInit {
     });
   }
 
-  deletear(projeto: Projeto){
+  deletar(projeto: Projeto){
       projeto.pontosFuncao = 0;
       projeto.cfps = null;
-      projeto.status = "CADASTRADO";
+      projeto.status = "PENDENTE";
       this.projetoService.atualizar(projeto).subscribe(projetos => projetos);
+  }
+
+  calcularIA(projeto: Projeto) {
+    
   }
 
   carregaProjetos(projetos) {
