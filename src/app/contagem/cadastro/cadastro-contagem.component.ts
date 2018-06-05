@@ -8,6 +8,7 @@ import { Projeto } from '../../projeto/projeto.model';
 import { ProjetoService } from '../../projeto/projeto.service';
 import { MedicaoService } from '../medicao.service';
 import { Medicao } from '../medicao.model';
+import { AuthService } from '../../login/auth.service';
 
 @Component({
   selector: 'app-contagem',
@@ -27,12 +28,10 @@ export class CadastroContagemComponent implements OnInit {
   constructor(public funcaoService: FuncaoService,
               public projetoService: ProjetoService,
               public medicaoService: MedicaoService,
-              public cfpsService: CfpsService) {
-
-      this.cfpsService.consultarTodos().subscribe(cfpss => {
-        this.cfps = cfpss[0]
-        console.log("logado cfps", cfpss, this.cfps);
-      });
+              public cfpsService: CfpsService,
+              private authService: AuthService) {
+                
+        this.cfps = authService.usuarioAutenticado.cfps;
   }
 
   ngOnInit() {
@@ -94,6 +93,10 @@ export class CadastroContagemComponent implements OnInit {
   medicao(medicoes){
     this.tiposFuncoes = medicoes;
     this.projetoSelecionado(this.projeto);
+  }
+
+  finalizar(){
+    console.log("finalizar");
   }
 
 }

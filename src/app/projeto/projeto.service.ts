@@ -77,7 +77,7 @@ export class ProjetoService {
     atualizar(projeto: Projeto) {
         let api = this.api + projeto.id;
 
-        console.log("atualizado", api, projeto);
+        console.log("atualizar", api, projeto);
 
         return this._http.put(api, projeto)
         .map(result => result.json());
@@ -94,6 +94,16 @@ export class ProjetoService {
         .map(result => result.json());
                       
     }
-    
+
+    calcularIA(projeto: Projeto) {
+        let api = this.api + "/ia/" + projeto.id;
+
+        console.log("calcularIA", api, projeto);
+
+        return this._http.get(api)
+        .map(result => result.json());
+                    
+    }
+
 }
 

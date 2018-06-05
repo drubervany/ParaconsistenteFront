@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter  } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from './usuario.model';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -9,9 +9,9 @@ export class AuthService {
 
     errorMessage: String;
 
-    private usuarioAutenticado: boolean = false;
+    usuarioAutenticado: Usuario;
 
-    mostrarMenuEmitter = new EventEmitter<boolean>();
+    mostrarMenuEmitter = new EventEmitter<Usuario>();
 
     constructor(private router: Router,
                 private _http: Http) { }
@@ -27,23 +27,23 @@ export class AuthService {
         .map(result => result.json())
         .subscribe(
             usuarioLogin => {
-                console.log(usuarioLogin);
-                
                 if (usuario.password === usuarioLogin.senha){
-                    console.log(usuario);
-
-                    this.usuarioAutenticado = true;
                     
-                    this.mostrarMenuEmitter.emit(this.usuarioAutenticado);
+                    this.usuarioAutenticado = usuarioLogin;
+                    usuario = usuarioLogin;
+                    
+                    console.log("usuario", usuario, this.usuarioAutenticado);
+                    this.mostrarMenuEmitter.emit(usuario);
                 
                     this.router.navigate(['/projeto']);
+                  
                 }
             },
             error =>  this.errorMessage = <any>error);            
     }
 
     usuarioEstaAutenticado(){
-        return this.usuarioAutenticado;
+        return this.usuarioAutenticado!=null;
     }
 }
 

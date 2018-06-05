@@ -19,6 +19,18 @@ export class CfpsService {
         .map(result => result.json());
                    
     }
+
+    consultarCpf(cpf: String) {
+
+        //let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/cfps/`;
+        let api = `http://localhost:8080/paraconsistente/api/cfps/cpf/`+ cpf;
+
+        console.log(api);
+
+        return this._http.get(api)
+        .map(result => result.json());
+                   
+    }
 }
 
 

@@ -26,7 +26,6 @@ export class ProjetoComponent implements OnInit {
   }
 
   ngOnInit() {
-  
      this.novo();
      this.service.consultarTodos().subscribe(projetos => this.projetosAtivos = projetos);
   }
@@ -52,7 +51,7 @@ export class ProjetoComponent implements OnInit {
 
   novo(){
      this.projeto = new Projeto();  
-     this.projeto.status = 'CADASTRADO';
+     this.projeto.status = 'PENDENTE';
   }
 
   pesquisar(){

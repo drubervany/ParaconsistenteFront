@@ -35,8 +35,8 @@
             <input type="text" class="form-control" value="{{projeto.cfpsIA.nome}}" disabled>
           </td>
           <td *ngIf="!projeto.cfpsIA">
-              <input type="text" class="form-control" disabled>
-            </td>
+            <input type="text" class="form-control" value="{{projeto.analiseGlobal}}" disabled>
+          </td>
           <td>=</td>
           <td *ngIf="projeto.cfpsIA">{{projeto.cfpsIA.numeroPontos}}</td>
           <td *ngIf="!projeto.cfpsIA">0</td>
@@ -53,13 +53,13 @@
           <td>
             <div class="row">
               <div class="col">
-                <button type="button" class="btn btn-success" (click)="atualizar(projeto);" *ngIf="projeto.pontosFuncao==0">
+                <button type="button" class="btn btn-success" (click)="atualizar(projeto);" *ngIf="projeto.calculaIA">
                   <span class="ion-plus-round"></span>
                 </button>
-                <button type="button" class="btn btn-danger" (click)="deletar(projeto)" *ngIf="projeto.pontosFuncao!=0">
+                <button type="button" class="btn btn-danger" (click)="deletar(projeto)" *ngIf="projeto.calculaIA">
                   <span class="ion-close-round Deletar"></span>
                 </button>
-                <button type="button" class="btn btn-primary" (click)="calularIA(projeto);">
+                <button type="button" class="btn btn-primary" (click)="calcularIA(projeto);" *ngIf="!projeto.calculaIA">
                   IA
                 </button>
               </div>

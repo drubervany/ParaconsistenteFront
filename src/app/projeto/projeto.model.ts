@@ -15,5 +15,7 @@ export class Projeto {
     cfps: CFPS;
     cfpsIA: CFPS;
     pontosFuncao: number = 0;
+    calculaIA: boolean;
+    analiseGlobal: string;
 
 }
