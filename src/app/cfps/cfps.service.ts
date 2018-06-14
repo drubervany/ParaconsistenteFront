@@ -26,7 +26,6 @@ export class CfpsService {
         let api = `http://localhost:8080/paraconsistente/api/cfps/cpf/`+ cpf;
 
         console.log(api);
-
         
         return this._http.get(api)
         .map(result => result.json());
