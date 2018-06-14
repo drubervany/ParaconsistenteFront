@@ -27,6 +27,7 @@ export class CfpsService {
 
         console.log(api);
 
+        
         return this._http.get(api)
         .map(result => result.json());
                    

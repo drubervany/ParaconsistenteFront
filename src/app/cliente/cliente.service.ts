@@ -12,6 +12,7 @@ export class ClienteService {
 
     consultar(cnpj: String) {
 
+        
         //let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/clientes/cnpj/${cnpj}`;
         let api = `http://localhost:8080/paraconsistente/api/clientes/cnpj/${cnpj}`;
 
