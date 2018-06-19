@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
     this.usuario.email = "teste@teste.com.br";
     this.usuario.password = "123456";
 
+    this.usuario.email = "luizlima@paraconsistente.com.br";
+    this.usuario.password = "123456";
+
   }
 
   fazerLogin() {
