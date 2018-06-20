@@ -30,7 +30,7 @@
             <td>{{cfps.nome}}</td>
             <td>{{cfps.telefone}}</td>
             <td>
-              <button type="button" class="btn btn-danger" (click)="deletar(cfps)">
+              <button type="button" class="btn btn-danger" (click)="deletar(cfps)" *ngIf="cfps.contador!='CLIENTE'">
                 <span class="ion-close-round Deletar"></span>
               </button>
             </td>
