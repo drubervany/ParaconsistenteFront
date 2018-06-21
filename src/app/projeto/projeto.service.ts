@@ -96,7 +96,7 @@ export class ProjetoService {
     }
 
     calcularIA(projeto: Projeto) {
-        let api = this.api + "/ia/" + projeto.id;
+        let api = this.api + "ia/" + projeto.id;
 
         console.log("calcularIA", api, projeto);
 

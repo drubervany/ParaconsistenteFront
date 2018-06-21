@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <th scope="col" colspan="4" >Projeto</th>
-          <th scope="col" colspan="3" >IA</th>
+          <th scope="col" colspan="1" ></th>
           <th scope="col" colspan="3" >Gerente</th>
         <tr>
         <tr>
@@ -15,9 +15,7 @@
           <th scope="col">Projeto</th>
           <th scope="col">Cliente</th>
           <th scope="col">Gerente</th>
-          <th scope="col">CFPS</th>
-          <th scope="col">=</th>
-          <th scope="col">PF</th>
+          <th scope="col">IA</th>
           <th scope="col">CFPS</th>
           <th scope="col">=</th>
           <th scope="col">PF</th>
@@ -37,14 +35,11 @@
           <td *ngIf="!projeto.cfpsIA">
             <input type="text" class="form-control" value="{{projeto.analiseGlobal}}" disabled>
           </td>
-          <td>=</td>
-          <td *ngIf="projeto.cfpsIA">{{projeto.cfpsIA.numeroPontos}}</td>
-          <td *ngIf="!projeto.cfpsIA">0</td>
           <td>
-            <select class="form-control" [(ngModel)]="projeto.cfps" name="Selecione CFPS" *ngIf="projeto.pontosFuncao==0">
+            <select class="form-control" [(ngModel)]="projeto.cfps" name="Selecione CFPS" *ngIf="projeto.cfps==null">
               <option *ngFor="let cfps of projeto.cfpss" [ngValue]="cfps">{{cfps.nome}}</option>
             </select>
-            <input type="text" class="form-control" value="{{projeto.cfps.nome}}" disabled *ngIf="projeto.pontosFuncao!=0">
+            <input type="text" class="form-control" value="{{projeto.cfps.nome}}" disabled *ngIf="projeto.cfps!=null">
           </td>
           <td>=</td>
           <td *ngIf="projeto.cfps">{{projeto.pontosFuncao}}</td>
