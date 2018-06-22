@@ -29,7 +29,7 @@ export class TomadaDecisaoComponent implements OnInit {
   }
 
   atualizar(projeto: Projeto) {
-    this.medicaoService.consultarTotalPF(projeto).subscribe(medicaoCFPS => {
+    this.medicaoService.consultarTotalPF(projeto, this.cfpsSelecionado).subscribe(medicaoCFPS => {
       this.cfps = medicaoCFPS;
       console.log("cfps", this.cfps);
       projeto.pontosFuncao = this.cfps.numeroPontos;

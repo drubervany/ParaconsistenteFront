@@ -32,6 +32,7 @@ export class CadastroContagemComponent implements OnInit {
               private authService: AuthService) {
                 
         this.cfps = authService.usuarioAutenticado.cfps;
+        console.log(">>>CFPS: ", this.cfps);
   }
 
   ngOnInit() {
@@ -77,7 +78,7 @@ export class CadastroContagemComponent implements OnInit {
     console.log("projetoSelecionado", projeto);
     this.projeto = projeto;
 
-    this.medicaoService.consultarProjeto(this.projeto).subscribe(medicao => {
+    this.medicaoService.consultarProjeto(this.projeto, this.cfps).subscribe(medicao => {
       console.log("medicao", medicao);
       if (medicao!==null){
           this.tiposFuncoes = medicao

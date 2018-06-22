@@ -1,21 +1,27 @@
-import { Injectable  } from '@angular/core';
+import { Injectable, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { Medicao } from "./medicao.model";
 import 'rxjs/add/operator/map';
 import { CFPS } from '../login/cfps.model';
 import { Projeto } from '../projeto/projeto.model';
+import { Usuario } from '../login/usuario.model';
+import { AuthService } from '../login/auth.service';
 
 @Injectable()
-export class MedicaoService {
+export class MedicaoService implements OnInit {
 
     errorMessage: String;
 
     //private api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/medicoes`;
     private api = `http://localhost:8080/paraconsistente/api/medicoes`;
 
-    constructor(private _http: Http) { }
+    constructor(private _http: Http) {
+    }
 
+    ngOnInit(){
+        
+    }
 
     consultarTodos() {
         
@@ -28,10 +34,10 @@ export class MedicaoService {
                     
     }
 
-    consultarProjeto(projeto: Projeto) {
-        
+    consultarProjeto(projeto: Projeto, cfps: CFPS) {
+
         //let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/` + projeto.id + "/medicoes";
-        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/medicoes";
+        let api = "http://localhost:8080/paraconsistente/api/projetos/" + projeto.id + "/cfps/" + cfps.id + "/medicoes";
 
 
         console.log(api);
@@ -52,10 +58,10 @@ export class MedicaoService {
                     
     }
 
-    consultarTotalPF(projeto: Projeto) {
+    consultarTotalPF(projeto: Projeto, cfps: CFPS) {
         
         //let api = `https://paraconsistente-back.herokuapp.com/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + projeto.cfps.id + "/medicoes/total";
-        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + projeto.cfps.id + "/medicoes/total";
+        let api = `http://localhost:8080/paraconsistente/api/projetos/` + projeto.id + "/cfps/" + cfps.id + "/medicoes/total";
         console.log(api);
 
         return this._http.get(api)

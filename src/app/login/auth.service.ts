@@ -35,7 +35,10 @@ export class AuthService {
                     console.log("usuario", usuario, this.usuarioAutenticado);
                     this.mostrarMenuEmitter.emit(usuario);
                 
-                    this.router.navigate(['/projeto']);
+                    if (usuario.cargo=="CFPS")
+                        this.router.navigate(['/cadastro-contagem']);
+                    else
+                        this.router.navigate(['/projeto']);
                   
                 }
             },
