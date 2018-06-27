@@ -24,8 +24,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let projeto of projetos">
-          <th scope="row">{{projeto.id}}</th>
+        <tr *ngFor="let projeto of projetos; let idx = index;">
+          <th scope="row">{{idx+1}}</th>
           <td>{{projeto.nome}}</td>
           <td>{{projeto.cliente.nome}}</td>
           <td>{{projeto.gerente.nome}}</td>

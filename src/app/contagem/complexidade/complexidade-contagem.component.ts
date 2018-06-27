@@ -33,11 +33,12 @@ export class ComplexidadeContagemComponent implements OnInit {
     
   constructor(public medicaoService: MedicaoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    //this.projeto.status = "CONTAGEM";
+  }
 
   adicionar(){
     this.tipoFuncao.totalPonfoFuncao = this.totalPonfoFuncao;
-    console.log("tipoFuncao", this.tipoFuncao);
     this.tipoFuncao.cfps = this.cfps;
     this.tipoFuncao.projeto = this.projeto;
     this.medicaoService.salvar(this.tipoFuncao)
@@ -47,7 +48,7 @@ export class ComplexidadeContagemComponent implements OnInit {
                         console.log("uri", uri);
                         this.medicaoService.consultarLocation(uri).subscribe(tipoFuncao => {
                           console.log("retornou objeto", tipoFuncao);
-                          this.medicao.emit(this.tiposFuncoes);
+                          this.medicao.emit(this.tipoFuncao);
                         });
                       });
   }

@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileDropModule, UploadFile, UploadEvent } from 'ngx-file-drop/lib/ngx-drop';
 import { ProjetoService } from './projeto.service';
-import { ClienteService } from '../cliente/cliente.service';
 import { Projeto } from './projeto.model';
+import { AuthService } from '../login/auth.service';
+import { CFPS } from '../login/cfps.model';
 
 @Component({
   selector: 'app-projeto',
@@ -14,20 +15,22 @@ import { Projeto } from './projeto.model';
 export class ProjetoComponent implements OnInit {
 
   projeto: Projeto;
-
+  cfps: CFPS;
   cnpjPesquisa: String;
   projetoSelecionado: Projeto;
   projetosAtivos: Projeto[] = new Array<Projeto>();
 
   constructor(private service: ProjetoService,
-              private clienteService: ClienteService
-              ) { 
+              private authService: AuthService) {
+      
+        this.cfps = authService.usuarioAutenticado.cfps;
+        console.log(">>>CFPS: ", this.cfps);
     
   }
 
   ngOnInit() {
      this.novo();
-     this.service.consultarTodos().subscribe(projetos => this.projetosAtivos = projetos);
+     this.service.consultarTodos(this.cfps).subscribe(projetos => this.projetosAtivos = projetos);
   }
 
   public files: UploadFile[] = [];

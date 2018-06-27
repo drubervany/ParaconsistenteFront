@@ -27,7 +27,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let funcao of funcoes; let idx = index;">
-          <th scope="row">{{funcao.id}}</th>
+          <th scope="row">{{idx+1}}</th>
           <td>{{funcao.nome}}</td>
           <td>
             <button type="button" class="btn btn-danger" (click)="deletar(funcao)">

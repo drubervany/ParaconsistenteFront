@@ -3,6 +3,7 @@ import { FIltroPesquisa } from './filtro-pesquisa.model';
 import { Projeto } from '../projeto/projeto.model';
 import { ProjetoService } from '../projeto/projeto.service';
 import { CFPS } from '../login/cfps.model';
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'filtro-pesquisa',
@@ -16,12 +17,17 @@ export class FiltroPesquisaComponent implements OnInit {
   todosProjetos: Projeto[];
   status: any;
   projetos: Projeto[];
-  
+  cfps: CFPS;
+
   @Output() pesquisaProjetos = new EventEmitter();
   
  
   constructor(private projetoService: ProjetoService,
-  ) { }
+              private authService: AuthService) {
+
+      this.cfps = authService.usuarioAutenticado.cfps;
+      console.log(">>>CFPS: ", this.cfps);
+  }
 
   ngOnInit() {
     this.filtro = new FIltroPesquisa();
@@ -29,7 +35,7 @@ export class FiltroPesquisaComponent implements OnInit {
     this.projetoService.consultarStatus().subscribe(status => {
       this.status = status;
     });     
-    this.projetoService.consultarTodos().subscribe(projetos => {
+    this.projetoService.consultarTodos(this.cfps).subscribe(projetos => {
       this.todosProjetos = projetos;
     }); 
   }
