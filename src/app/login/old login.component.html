@@ -12,14 +12,4 @@
   </label>
 </div>
 
-<button [swal]="acesso" class="btn btn-lg btn-primary btn-block" type="submit" (click)="fazerLogin()">Entrar</button>
-
-<swal
-  #acesso
-  timer=1800
-  position="top-right"
-  title="Ops! Tentando..."
-  type="warning"
-  [showCancelButton]="false"
-  [focusCancel]="false">
-</swal>
+<button class="btn btn-lg btn-primary btn-block" type="submit" (click)="fazerLogin()">Entrar</button>

@@ -96,7 +96,7 @@ export class ComplexidadeContagemComponent implements OnInit {
         "3": 6
     }
 
-    let complexidade: any = [{
+    let complexidadealiaie: any = [{
         inicio: 1,
         fim: 1,
         tipoDados: [{
@@ -146,36 +146,203 @@ export class ComplexidadeContagemComponent implements OnInit {
         }]
     }];
 
-    console.log("total funcao", this.tipoFuncao);
+    let complexidadecese: any = [{
+        inicio: 0,
+        fim: 1,
+        tipoDados: [{
+            inicio: 1,
+            fim: 5,
+            resultado: "1"
+        },{
+            inicio: 6,
+            fim: 19,
+            resultado: "1"
+        },{
+            inicio: 20,
+            fim: 999,
+            resultado: "2"
+        }]
+    },{
+        inicio: 2,
+        fim: 3,
+        tipoDados: [{
+            inicio: 1,
+            fim: 5,
+            resultado: "1"
+        },{
+            inicio: 6,
+            fim: 19,
+            resultado: "2"
+        },{
+            inicio: 20,
+            fim: 999,
+            resultado: "3"
+        }]
+    },{
+        inicio: 4,
+        fim: 999,
+        tipoDados: [{
+            inicio: 1,
+            fim: 5,
+            resultado: "2"
+        },{
+            inicio: 6,
+            fim: 19,
+            resultado: "3"
+        },{
+            inicio: 20,
+            fim: 999,
+            resultado: "3"
+        }]
+    }];
+ 
+ let complexidadeee: any = [{
+        inicio: 0,
+        fim: 1,
+        tipoDados: [{
+            inicio: 1,
+            fim: 4,
+            resultado: "1"
+        },{
+            inicio: 5,
+            fim: 15,
+            resultado: "1"
+        },{
+            inicio: 16,
+            fim: 999,
+            resultado: "2"
+        }]
+    },{
+        inicio: 2,
+        fim: 2,
+        tipoDados: [{
+            inicio: 1,
+            fim: 4,
+            resultado: "1"
+        },{
+            inicio: 5,
+            fim: 15,
+            resultado: "2"
+        },{
+            inicio: 16,
+            fim: 999,
+            resultado: "3"
+        }]
+    },{
+        inicio: 3,
+        fim: 999,
+        tipoDados: [{
+            inicio: 1,
+            fim: 4,
+            resultado: "2"
+        },{
+            inicio: 5,
+            fim: 15,
+            resultado: "3"
+        },{
+            inicio: 16,
+            fim: 999,
+            resultado: "3"
+        }]
+    }];
+
+    console.log("total funcao TD ", this.tipoFuncao);
+    console.log("total funcao QTR", this.tipoFuncao.qtdeRegistros);
+    let valoraliaie = 0;
+    let valorcese = 0;
+    let valoree = 0;
     let valor = 0;
-    complexidade.forEach(tipoRegistro => {
+
+    complexidadealiaie.forEach(tipoRegistro => {
         if (this.tipoFuncao.qtdeRegistros >= tipoRegistro.inicio  && 
             this.tipoFuncao.qtdeRegistros <= tipoRegistro.fim){
+            
+            console.log("total funcao TR", tipoRegistro);
             
             tipoRegistro.tipoDados.forEach(tipoDados => {
                 if (this.tipoFuncao.qtdeDados >= tipoDados.inicio  && 
                     this.tipoFuncao.qtdeDados <= tipoDados.fim){
                     
                     if (this.tipoFuncao.tipo==="ALI"){
-                        valor = ali[tipoDados.resultado];
+                        valoraliaie = ali[tipoDados.resultado];
                     } else
                     if (this.tipoFuncao.tipo==="AIE"){
-                        valor = aie[tipoDados.resultado];
+                        valoraliaie = aie[tipoDados.resultado];
                     } else
                     if (this.tipoFuncao.tipo==="EE"){
-                        valor = ee[tipoDados.resultado];
+                        valoraliaie = ee[tipoDados.resultado];
                     } else
                     if (this.tipoFuncao.tipo==="SE"){
-                        valor = se[tipoDados.resultado];
+                        valoraliaie = se[tipoDados.resultado];
                     } else
                     if (this.tipoFuncao.tipo==="CE"){
-                        valor = ce[tipoDados.resultado];
+                        valoraliaie = ce[tipoDados.resultado];
+                    }
+                }
+            }); console.log("total valorcese", valoraliaie);
+        } valor = valoraliaie;
+    }); 
+
+    complexidadecese.forEach(tipoRegistro => {
+        if (this.tipoFuncao.qtdeRegistros >= tipoRegistro.inicio  && 
+            this.tipoFuncao.qtdeRegistros <= tipoRegistro.fim){
+            
+            console.log("total funcao TR", tipoRegistro);
+            
+            tipoRegistro.tipoDados.forEach(tipoDados => {
+                if (this.tipoFuncao.qtdeDados >= tipoDados.inicio  && 
+                    this.tipoFuncao.qtdeDados <= tipoDados.fim){
+                    
+                    if (this.tipoFuncao.tipo==="ALI"){
+                        valorcese = ali[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="AIE"){
+                        valorcese = aie[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="EE"){
+                        valorcese = ee[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="SE"){
+                        valorcese = se[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="CE"){
+                        valorcese = ce[tipoDados.resultado];
+                    }
+                }
+            }); console.log("total valorcese", valorcese);
+        } valor = valorcese;
+    }); 
+
+    complexidadeee.forEach(tipoRegistro => {
+        if (this.tipoFuncao.qtdeRegistros >= tipoRegistro.inicio  && 
+            this.tipoFuncao.qtdeRegistros <= tipoRegistro.fim){
+            
+            console.log("total funcao TR", tipoRegistro);
+            
+            tipoRegistro.tipoDados.forEach(tipoDados => {
+                if (this.tipoFuncao.qtdeDados >= tipoDados.inicio  && 
+                    this.tipoFuncao.qtdeDados <= tipoDados.fim){
+                    
+                    if (this.tipoFuncao.tipo==="ALI"){
+                        valoree = ali[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="AIE"){
+                        valoree = aie[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="EE"){
+                        valoree = ee[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="SE"){
+                        valoree = se[tipoDados.resultado];
+                    } else
+                    if (this.tipoFuncao.tipo==="CE"){
+                        valoree = ce[tipoDados.resultado];
                     }
                 }
             });
-        }
+        } valor = valoree;
     });
-    return valor;  
+    return valor;
   }
 }
 

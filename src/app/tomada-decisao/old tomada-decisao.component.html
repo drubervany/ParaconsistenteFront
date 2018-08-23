@@ -1,0 +1,67 @@
+<filtro-pesquisa (pesquisaProjetos)='carregaProjetos($event)'></filtro-pesquisa>
+
+<h2 class="form-signin-heading">Tomada de Decisão</h2>
+<div class="form-group row">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" colspan="4" >Projeto</th>
+          <th scope="col" colspan="1" ></th>
+          <th scope="col" colspan="3" >Gerente</th>
+        <tr>
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">Projeto</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Gerente</th>
+          <th scope="col">IA</th>
+          <th scope="col">CFPS</th>
+          <th scope="col">=</th>
+          <th scope="col">PF</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projeto of projetos; let idx = index;">
+          <th scope="row">{{idx+1}}</th>
+          <td>{{projeto.nome}}</td>
+          <td>{{projeto.cliente.nome}}</td>
+          <td>{{projeto.gerente.nome}}</td>
+          <td *ngIf="projeto.cfpsIA">
+            <input type="text" class="form-control" value="{{projeto.cfpsIA.nome}}" disabled>
+          </td>
+          <td *ngIf="!projeto.cfpsIA">
+            <input type="text" class="form-control" value="{{projeto.analiseGlobal}}" disabled>
+          </td>
+          <td>
+            <select class="form-control" [(ngModel)]="projeto.cfps" name="Selecione CFPS" *ngIf="projeto.cfps==null">
+              <option *ngFor="let cfps of projeto.cfpss" [ngValue]="cfps">{{cfps.nome}}</option>
+            </select>
+            <input type="text" class="form-control" value="{{projeto.cfps.nome}}" disabled *ngIf="projeto.cfps!=null">
+          </td>
+          <td>=</td>
+          <td *ngIf="projeto.cfps">{{projeto.pontosFuncao}}</td>
+          <td *ngIf="!projeto.cfps">0</td>
+          <td>{{projeto.status}}</td>
+          <td>
+            <div class="row">
+              <div class="col">
+                <button type="button" class="btn btn-success" (click)="atualizar(projeto);" *ngIf="projeto.calculaIA">
+                  <span class="ion-plus-round"></span>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="deletar(projeto)" *ngIf="projeto.calculaIA">
+                  <span class="ion-close-round Deletar"></span>
+                </button>
+                <button type="button" class="btn btn-primary" (click)="calcularIA(projeto);" *ngIf="!projeto.calculaIA">
+                  IA
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

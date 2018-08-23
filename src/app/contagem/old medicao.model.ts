@@ -8,7 +8,6 @@ export class Medicao {
     tipo: String;
     qtdeDados: number = 0;
     qtdeRegistros: number = 0;
-    bma: String;
     totalPonfoFuncao: number = 0;
     cfps: CFPS;
     projeto: Projeto;
